@@ -1,0 +1,101 @@
+@layer utilities {
+  .ds-bg-noise,
+  .ds-bg-grid,
+  .ds-bg-dots,
+  .ds-bg-glow,
+  .ds-bg-mesh,
+  .ds-bg-radial,
+  .ds-bg-aurora {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .ds-bg-noise::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+    content: '';
+    opacity: 0.035;
+    pointer-events: none;
+  }
+
+  .ds-bg-grid {
+    background-image:
+      linear-gradient(var(--ds-border-subtle) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ds-border-subtle) 1px, transparent 1px);
+    background-position: center;
+    background-size: var(--space-32) var(--space-32);
+  }
+
+  .ds-bg-dots {
+    background-image: radial-gradient(
+      circle,
+      var(--ds-border-strong) 1px,
+      transparent 1px
+    );
+    background-position: center;
+    background-size: var(--space-24) var(--space-24);
+  }
+
+  .ds-bg-glow {
+    background-image: radial-gradient(
+      circle at 50% 0%,
+      color-mix(in oklch, var(--ds-primary) 16%, transparent) 0%,
+      transparent 48%
+    );
+  }
+
+  .ds-bg-mesh {
+    background-image:
+      radial-gradient(
+        circle at 12% 8%,
+        color-mix(in oklch, var(--ds-primary) 10%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 88% 16%,
+        color-mix(in oklch, var(--ds-secondary) 9%, transparent),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 58% 92%,
+        color-mix(in oklch, var(--ds-info) 6%, transparent),
+        transparent 38%
+      );
+  }
+
+  .ds-bg-radial {
+    background-image: radial-gradient(
+      ellipse at center,
+      var(--ds-surface-secondary),
+      var(--ds-background-canvas) 68%
+    );
+  }
+
+  .ds-bg-aurora {
+    overflow: hidden;
+  }
+
+  .ds-bg-aurora::before {
+    position: absolute;
+    z-index: -1;
+    top: -35%;
+    left: 5%;
+    width: 90%;
+    height: 70%;
+    border-radius: var(--radius-full);
+    background: linear-gradient(
+      110deg,
+      color-mix(in oklch, var(--ds-primary) 14%, transparent),
+      color-mix(in oklch, var(--ds-secondary) 10%, transparent),
+      color-mix(in oklch, var(--ds-info) 8%, transparent)
+    );
+    content: '';
+    filter: blur(var(--blur-2xl));
+    opacity: 0.65;
+    pointer-events: none;
+    transform: rotate(-5deg);
+  }
+}

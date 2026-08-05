@@ -1,0 +1,88 @@
+@layer utilities {
+  .surface-glass {
+    border: 1px solid var(--ds-border-subtle);
+    background: var(--ds-surface-glass);
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: blur(var(--blur-md)) saturate(1.15);
+  }
+
+  .gradient-text {
+    background: var(--gradient-brand);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+  }
+
+  .gradient-hairline {
+    height: 1px;
+    border: 0;
+    background: var(--gradient-hairline);
+  }
+
+  .transition-interface {
+    transition: var(--transition-hover);
+  }
+
+  .interactive-lift {
+    transition: var(--transition-hover);
+  }
+
+  .interactive-lift:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+  }
+
+  .interactive-lift:active {
+    box-shadow: var(--shadow-soft);
+    transform: translateY(0) scale(0.995);
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+    box-shadow: var(--shadow-focus);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      var(--palette-neutral-1000) 8%,
+      var(--palette-neutral-1000) 92%,
+      transparent
+    );
+  }
+
+  .mask-fade-y {
+    mask-image: linear-gradient(
+      180deg,
+      transparent,
+      var(--palette-neutral-1000) 8%,
+      var(--palette-neutral-1000) 92%,
+      transparent
+    );
+  }
+
+  .line-clamp-2,
+  .line-clamp-3 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    -webkit-line-clamp: 3;
+  }
+}

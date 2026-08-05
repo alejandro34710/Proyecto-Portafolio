@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import './fonts.css';
+@import './tokens/colors.css';
+@import './tokens/foundations.css';
+@import './tokens/typography.css';
+@import './tokens/effects.css';
+@import './themes.css';
+@import './globals.css';
+@import './backgrounds.css';
+@import './utilities.css';
+@import './loading.css';
+
+@custom-variant dark (&:where(.dark, .dark *));

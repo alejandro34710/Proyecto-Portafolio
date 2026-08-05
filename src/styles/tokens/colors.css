@@ -1,0 +1,103 @@
+:root {
+  /* Primitive palette — OKLCH keeps each scale perceptually even. */
+  --palette-primary-50: oklch(0.98 0.014 264);
+  --palette-primary-100: oklch(0.95 0.03 264);
+  --palette-primary-200: oklch(0.9 0.058 264);
+  --palette-primary-300: oklch(0.82 0.105 264);
+  --palette-primary-400: oklch(0.7 0.17 264);
+  --palette-primary-500: oklch(0.58 0.215 264);
+  --palette-primary-600: oklch(0.5 0.21 264);
+  --palette-primary-700: oklch(0.43 0.18 264);
+  --palette-primary-800: oklch(0.35 0.135 264);
+  --palette-primary-900: oklch(0.28 0.09 264);
+  --palette-primary-950: oklch(0.19 0.06 264);
+
+  --palette-secondary-50: oklch(0.98 0.01 292);
+  --palette-secondary-100: oklch(0.95 0.025 292);
+  --palette-secondary-200: oklch(0.9 0.05 292);
+  --palette-secondary-300: oklch(0.82 0.085 292);
+  --palette-secondary-400: oklch(0.7 0.13 292);
+  --palette-secondary-500: oklch(0.59 0.16 292);
+  --palette-secondary-600: oklch(0.51 0.155 292);
+  --palette-secondary-700: oklch(0.43 0.13 292);
+  --palette-secondary-800: oklch(0.35 0.1 292);
+  --palette-secondary-900: oklch(0.28 0.072 292);
+  --palette-secondary-950: oklch(0.19 0.048 292);
+
+  --palette-neutral-0: oklch(1 0 0);
+  --palette-neutral-50: oklch(0.985 0.002 260);
+  --palette-neutral-100: oklch(0.97 0.004 260);
+  --palette-neutral-200: oklch(0.93 0.007 260);
+  --palette-neutral-300: oklch(0.87 0.01 260);
+  --palette-neutral-400: oklch(0.7 0.014 260);
+  --palette-neutral-500: oklch(0.55 0.016 260);
+  --palette-neutral-600: oklch(0.44 0.017 260);
+  --palette-neutral-700: oklch(0.34 0.018 260);
+  --palette-neutral-800: oklch(0.24 0.017 260);
+  --palette-neutral-900: oklch(0.17 0.015 260);
+  --palette-neutral-950: oklch(0.105 0.012 260);
+  --palette-neutral-1000: oklch(0 0 0);
+
+  --palette-success-50: oklch(0.98 0.018 151);
+  --palette-success-100: oklch(0.95 0.045 151);
+  --palette-success-200: oklch(0.9 0.082 151);
+  --palette-success-300: oklch(0.81 0.13 151);
+  --palette-success-400: oklch(0.71 0.16 151);
+  --palette-success-500: oklch(0.62 0.165 151);
+  --palette-success-600: oklch(0.52 0.145 151);
+  --palette-success-700: oklch(0.43 0.115 151);
+  --palette-success-800: oklch(0.35 0.085 151);
+  --palette-success-900: oklch(0.28 0.06 151);
+
+  --palette-warning-50: oklch(0.985 0.02 84);
+  --palette-warning-100: oklch(0.96 0.055 84);
+  --palette-warning-200: oklch(0.91 0.1 84);
+  --palette-warning-300: oklch(0.85 0.145 84);
+  --palette-warning-400: oklch(0.78 0.16 84);
+  --palette-warning-500: oklch(0.7 0.15 78);
+  --palette-warning-600: oklch(0.59 0.13 72);
+  --palette-warning-700: oklch(0.49 0.108 68);
+  --palette-warning-800: oklch(0.4 0.082 65);
+  --palette-warning-900: oklch(0.32 0.06 62);
+
+  --palette-danger-50: oklch(0.98 0.015 25);
+  --palette-danger-100: oklch(0.95 0.04 25);
+  --palette-danger-200: oklch(0.9 0.075 25);
+  --palette-danger-300: oklch(0.81 0.13 25);
+  --palette-danger-400: oklch(0.7 0.19 25);
+  --palette-danger-500: oklch(0.61 0.22 25);
+  --palette-danger-600: oklch(0.52 0.205 25);
+  --palette-danger-700: oklch(0.44 0.17 25);
+  --palette-danger-800: oklch(0.36 0.13 25);
+  --palette-danger-900: oklch(0.29 0.09 25);
+
+  --palette-info-50: oklch(0.98 0.014 232);
+  --palette-info-100: oklch(0.95 0.035 232);
+  --palette-info-200: oklch(0.9 0.068 232);
+  --palette-info-300: oklch(0.82 0.115 232);
+  --palette-info-400: oklch(0.71 0.155 232);
+  --palette-info-500: oklch(0.62 0.17 232);
+  --palette-info-600: oklch(0.53 0.16 232);
+  --palette-info-700: oklch(0.45 0.135 232);
+  --palette-info-800: oklch(0.37 0.105 232);
+  --palette-info-900: oklch(0.29 0.075 232);
+
+  /* Alpha primitives */
+  --alpha-black-2: oklch(0 0 0 / 0.02);
+  --alpha-black-4: oklch(0 0 0 / 0.04);
+  --alpha-black-6: oklch(0 0 0 / 0.06);
+  --alpha-black-8: oklch(0 0 0 / 0.08);
+  --alpha-black-12: oklch(0 0 0 / 0.12);
+  --alpha-black-16: oklch(0 0 0 / 0.16);
+  --alpha-black-24: oklch(0 0 0 / 0.24);
+  --alpha-black-40: oklch(0 0 0 / 0.4);
+  --alpha-black-64: oklch(0 0 0 / 0.64);
+  --alpha-white-4: oklch(1 0 0 / 0.04);
+  --alpha-white-6: oklch(1 0 0 / 0.06);
+  --alpha-white-8: oklch(1 0 0 / 0.08);
+  --alpha-white-12: oklch(1 0 0 / 0.12);
+  --alpha-white-16: oklch(1 0 0 / 0.16);
+  --alpha-white-24: oklch(1 0 0 / 0.24);
+  --alpha-white-40: oklch(1 0 0 / 0.4);
+  --alpha-white-64: oklch(1 0 0 / 0.64);
+}

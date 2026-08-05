@@ -1,0 +1,27 @@
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-700.css';
+
+@import '@fontsource/space-grotesk/latin-400.css';
+@import '@fontsource/space-grotesk/latin-500.css';
+@import '@fontsource/space-grotesk/latin-600.css';
+@import '@fontsource/space-grotesk/latin-700.css';
+
+:root {
+  --type-font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-font-display:
+    'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --type-font-mono:
+    'SFMono-Regular', 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+
+  font-synthesis: none;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+@theme inline {
+  --font-sans: var(--type-font-sans);
+  --font-display: var(--type-font-display);
+  --font-mono: var(--type-font-mono);
+}

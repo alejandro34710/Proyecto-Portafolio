@@ -1,0 +1,20 @@
+import { ReactLenis } from 'lenis/react'
+import type { ReactNode } from 'react'
+import 'lenis/dist/lenis.css'
+
+export function LenisProvider({ children }: { children: ReactNode }) {
+  return (
+    <ReactLenis
+      root
+      options={{
+        autoRaf: true,
+        lerp: 0.1,
+        duration: 1.2,
+        smoothWheel: true,
+        syncTouch: true,
+      }}
+    >
+      {children}
+    </ReactLenis>
+  )
+}

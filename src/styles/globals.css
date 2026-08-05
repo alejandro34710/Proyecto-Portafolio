@@ -1,0 +1,119 @@
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: var(--ds-border-default);
+  }
+
+  html {
+    min-width: 20rem;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--ds-scrollbar) transparent;
+    scrollbar-width: thin;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--ds-background-canvas);
+    color: var(--ds-text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--ds-text-primary);
+    font-family: var(--font-display);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    color: inherit;
+    font: inherit;
+  }
+
+  button,
+  [role='button'] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background: var(--ds-selection-background);
+    color: var(--ds-selection-text);
+    text-shadow: none;
+  }
+
+  :where(
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    summary,
+    [tabindex]:not([tabindex='-1'])
+  ):focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+    box-shadow: var(--shadow-focus);
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    min-height: var(--space-40);
+    border: 3px solid transparent;
+    border-radius: var(--radius-full);
+    background: var(--ds-scrollbar);
+    background-clip: padding-box;
+    transition: background-color var(--transition-fast);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--ds-scrollbar-hover);
+    background-clip: padding-box;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

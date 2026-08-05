@@ -1,0 +1,55 @@
+@keyframes ds-skeleton-shimmer {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes ds-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scaleY(0.7);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@layer components {
+  .ds-skeleton {
+    position: relative;
+    overflow: hidden;
+    background: var(--ds-surface-tertiary);
+  }
+
+  .ds-skeleton::after {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-sheen);
+    content: '';
+    transform: translateX(-120%);
+    animation: ds-skeleton-shimmer 1.8s var(--ease-out) infinite;
+  }
+
+  .ds-loading-bar {
+    width: 2px;
+    height: var(--space-12);
+    border-radius: var(--radius-full);
+    background: currentColor;
+    animation: ds-loading-pulse 0.9s var(--ease-in-out) infinite;
+  }
+
+  .ds-loading-bar:nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  .ds-loading-bar:nth-child(3) {
+    animation-delay: 200ms;
+  }
+}
