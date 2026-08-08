@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  ArrowDown,
-  ArrowRight,
   ArrowUpRight,
   BrainCircuit,
   Braces,
@@ -13,13 +11,15 @@ import {
   Network,
   Send,
 } from 'lucide-react'
-import { AnimatePresence, motion, useScroll } from 'motion/react'
+import { motion, useScroll } from 'motion/react'
 import type { Variants } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { Seo } from '@/components/common/Seo'
 import { HeroHeader } from '@/components/hero/HeroHeader'
 import { HeroIsometricGraphic } from '@/components/hero/HeroIsometricGraphic'
 import { SystemStatusBar } from '@/components/hero/SystemStatusBar'
+import { PhilosophySection } from '@/components/philosophy/PhilosophySection'
+import { SystemMap } from '@/components/system-map/SystemMap'
 import './HomePage.css'
 
 const chapters = [
@@ -147,9 +147,8 @@ const chapters = [
 
 const journeySections = [
   { id: 'hero', number: '00', label: 'Opening' },
-  { id: 'philosophy', number: '01', label: 'Philosophy' },
-  { id: 'system-index', number: 'IX', label: 'System index' },
-  ...chapters.slice(1),
+  { id: 'system-map', number: 'SM', label: 'System Map' },
+  ...chapters,
 ] as const
 
 const stagger: Variants = {
@@ -252,268 +251,6 @@ function ChapterLink({ to, children }: { to: string; children: string }) {
         <ArrowUpRight size={17} strokeWidth={1.5} />
       </span>
     </Link>
-  )
-}
-
-function PhilosophyStructure() {
-  return (
-    <div className="philosophy-structure" aria-hidden="true">
-      <div className="philosophy-structure__coordinates">
-        <span>04°36&apos;05.2&quot;N</span>
-        <span>STRUCTURE / 01</span>
-      </div>
-      <svg viewBox="0 0 760 620" preserveAspectRatio="none">
-        <g className="philosophy-structure__guides">
-          <path d="M40 500L382 92L718 500" />
-          <path d="M96 488H666" />
-          <path d="M158 408H604" />
-          <path d="M228 328H537" />
-          <path d="M302 245H467" />
-        </g>
-        <g className="philosophy-structure__connections">
-          <path pathLength="1" d="M102 401C210 401 242 312 348 312" />
-          <path pathLength="1" d="M348 312C471 312 494 202 653 202" />
-          <path pathLength="1" d="M348 312C470 312 488 474 669 474" />
-        </g>
-        <g className="philosophy-structure__nodes">
-          <circle cx="102" cy="401" r="5" />
-          <circle cx="348" cy="312" r="6" />
-          <circle cx="653" cy="202" r="5" />
-          <circle cx="669" cy="474" r="5" />
-        </g>
-      </svg>
-      <div className="philosophy-structure__stage">
-        <span className="philosophy-structure__floor philosophy-structure__floor--one" />
-        <span className="philosophy-structure__floor philosophy-structure__floor--two" />
-        <span className="philosophy-structure__wall philosophy-structure__wall--one" />
-        <span className="philosophy-structure__wall philosophy-structure__wall--two" />
-        <div className="philosophy-structure__core">
-          <span className="philosophy-structure__face philosophy-structure__face--front">
-            PRODUCT
-          </span>
-          <span className="philosophy-structure__face philosophy-structure__face--side" />
-          <span className="philosophy-structure__face philosophy-structure__face--top" />
-        </div>
-        <div className="philosophy-structure__panel philosophy-structure__panel--code">
-          <span>01 / CODE</span>
-          <i />
-          <i />
-          <i />
-          <i />
-        </div>
-        <div className="philosophy-structure__panel philosophy-structure__panel--experience">
-          <span>02 / EXPERIENCE</span>
-          <strong>Clear</strong>
-          <small>Meaningful</small>
-        </div>
-        <div className="philosophy-structure__panel philosophy-structure__panel--impact">
-          <span>03 / IMPACT</span>
-          <strong>Useful</strong>
-          <small>Measurable</small>
-        </div>
-      </div>
-      <div className="philosophy-structure__label philosophy-structure__label--one">
-        <i /> ARCHITECTURE <small>Scalable / reliable</small>
-      </div>
-      <div className="philosophy-structure__label philosophy-structure__label--two">
-        <i /> DECISIONS <small>Intentional / visible</small>
-      </div>
-      <span className="philosophy-structure__pulse philosophy-structure__pulse--one" />
-      <span className="philosophy-structure__pulse philosophy-structure__pulse--two" />
-    </div>
-  )
-}
-
-function SystemIndexVisual({
-  chapter,
-  index,
-}: {
-  chapter: (typeof chapters)[number]
-  index: number
-}) {
-  return (
-    <div
-      className="index-machine"
-      id="index-visual"
-      data-visual={chapter.visual}
-    >
-      <div className="index-machine__coordinates">
-        <span>VIEW / SYSTEM</span>
-        <span>ACTIVE LAYER {chapter.number}</span>
-      </div>
-      <div className="index-machine__scale" aria-hidden="true">
-        <span>00</span>
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-        <span>06</span>
-      </div>
-      <AnimatePresence mode="wait">
-        <motion.div
-          className="index-machine__scene"
-          key={chapter.id}
-          initial={{ opacity: 0, scale: 0.965, rotateZ: -0.6 }}
-          animate={{ opacity: 1, scale: 1, rotateZ: 0 }}
-          exit={{ opacity: 0, scale: 1.025, rotateZ: 0.4 }}
-          transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <svg
-            viewBox="0 0 900 650"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <g className="index-machine__grid">
-              <path d="M70 520L450 104L834 520" />
-              <path d="M145 520L450 190L755 520" />
-              <path d="M224 520L450 274L676 520" />
-              <path d="M70 520H834M145 442H758M218 364H683M292 286H610" />
-            </g>
-            <g className="index-machine__routes">
-              <path
-                pathLength="1"
-                d="M116 430C244 430 249 318 390 318S554 205 766 205"
-              />
-              <path
-                pathLength="1"
-                d="M116 430C276 430 296 506 451 506S612 411 796 411"
-              />
-              <path pathLength="1" d="M390 318C390 230 453 191 453 103" />
-            </g>
-            <g className="index-machine__points">
-              <circle cx="116" cy="430" r="5" />
-              <circle cx="390" cy="318" r="6" />
-              <circle cx="766" cy="205" r="5" />
-              <circle cx="796" cy="411" r="5" />
-              <circle cx="451" cy="506" r="5" />
-              <circle cx="453" cy="103" r="5" />
-            </g>
-          </svg>
-          <div className="index-machine__platform index-machine__platform--base" />
-          <div className="index-machine__platform index-machine__platform--mid" />
-          <div className="index-machine__core">
-            <span>{chapter.number}</span>
-            <small>{chapter.label}</small>
-          </div>
-          <div className="index-machine__pane index-machine__pane--one">
-            <span>{chapter.tags[0]}</span>
-            <i />
-            <i />
-            <i />
-          </div>
-          <div className="index-machine__pane index-machine__pane--two">
-            <span>{chapter.tags[1]}</span>
-            <strong>{String(index + 1).padStart(2, '0')}</strong>
-          </div>
-          <div className="index-machine__pane index-machine__pane--three">
-            <span>{chapter.tags[2]}</span>
-            <i />
-            <i />
-          </div>
-          <span className="index-machine__traveller index-machine__traveller--one" />
-          <span className="index-machine__traveller index-machine__traveller--two" />
-        </motion.div>
-      </AnimatePresence>
-      <div className="index-machine__status">
-        <i /> Illustration responding <span>0{index + 1} / 08</span>
-      </div>
-    </div>
-  )
-}
-
-function SystemIndex() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const activeChapter = chapters[activeIndex]
-
-  return (
-    <section className="system-index chapter" id="system-index" data-chapter>
-      <div className="system-index__heading">
-        <ChapterLabel number="IX">System index</ChapterLabel>
-        <span>08 CHAPTERS / ONE PRODUCT SYSTEM</span>
-      </div>
-      <div className="system-index__content">
-        <div className="system-index__directory">
-          <div className="system-index__intro">
-            <span>Navigate the system</span>
-            <p>
-              Cada capítulo abre una capa distinta de cómo pienso, diseño y
-              construyo productos.
-            </p>
-          </div>
-          <div className="system-index__list" role="list">
-            {chapters.map((chapter, index) => {
-              const isActive = index === activeIndex
-              return (
-                <button
-                  className={isActive ? 'is-active' : ''}
-                  type="button"
-                  key={chapter.id}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onFocus={() => setActiveIndex(index)}
-                  onClick={() => setActiveIndex(index)}
-                  aria-pressed={isActive}
-                  aria-controls="index-visual"
-                >
-                  <span className="system-index__number">{chapter.number}</span>
-                  <span className="system-index__name">{chapter.label}</span>
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.span
-                        className="system-index__row-detail"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 8 }}
-                        transition={{ duration: 0.32 }}
-                      >
-                        {chapter.subtitle}
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                  <ArrowUpRight size={16} strokeWidth={1.35} />
-                </button>
-              )
-            })}
-          </div>
-        </div>
-        <div className="system-index__preview">
-          <AnimatePresence mode="wait">
-            <motion.div
-              className="system-index__description"
-              key={activeChapter.id}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <span>{activeChapter.subtitle}</span>
-              <p>{activeChapter.description}</p>
-              <div>
-                {activeChapter.tags.map((tag) => (
-                  <i key={tag}>{tag}</i>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-          <SystemIndexVisual chapter={activeChapter} index={activeIndex} />
-        </div>
-      </div>
-      <div className="system-index__console">
-        <div>
-          <span>SYSTEM CONSOLE</span>
-          <code>&gt; layer.{activeChapter.id} selected</code>
-        </div>
-        {activeChapter.facts.map(([label, value]) => (
-          <div key={label}>
-            <span>{label}</span>
-            <strong>{value}</strong>
-          </div>
-        ))}
-        <a href={`#${activeChapter.id}`}>
-          Open chapter <ArrowRight size={15} />
-        </a>
-      </div>
-    </section>
   )
 }
 
@@ -640,65 +377,19 @@ export function HomePage() {
             <p className="hero-ref__subtitle">
               Building digital products from idea to production.
             </p>
-            <a className="hero-ref__scroll" href="#philosophy">
-              <span className="hero-ref__scroll-dot" aria-hidden="true" />
-              <span>Scroll to enter the system</span>
-              <ArrowDown size={14} strokeWidth={1.5} />
-            </a>
           </div>
           <SystemStatusBar />
         </section>
 
-        <section className="philosophy chapter" id="philosophy" data-chapter>
-          <motion.div
-            className="philosophy__layout"
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <motion.div variants={editorialReveal} className="philosophy__meta">
-              <ChapterLabel number="01">Philosophy</ChapterLabel>
-              <span className="philosophy__side-note">
-                SYSTEMS / PEOPLE / OUTCOMES
-              </span>
-            </motion.div>
-            <div className="philosophy__copy">
-              <motion.h2 variants={editorialReveal}>
-                Un producto no termina<span>cuando compila.</span>
-              </motion.h2>
-              <motion.div
-                className="philosophy__statement"
-                variants={editorialReveal}
-              >
-                <span className="philosophy__principle">
-                  01 / COMPLETE PRODUCTS
-                </span>
-                <p>
-                  Termina cuando alguien puede usarlo, el equipo puede
-                  evolucionarlo y el sistema puede sostenerlo.
-                </p>
-                <ChapterLink to="/about">Explore philosophy</ChapterLink>
-              </motion.div>
-            </div>
-            <motion.div
-              className="philosophy__visual"
-              variants={depthReveal}
-              aria-hidden="true"
-            >
-              <PhilosophyStructure />
-            </motion.div>
-          </motion.div>
-          <div className="chapter-footer chapter-footer--dark">
-            <span>Current layer / Philosophy</span>
-            <p>“Las decisiones pequeñas también diseñan el sistema.”</p>
-            <a href="#system-index">
-              Next / System Index <ArrowDown size={15} />
-            </a>
-          </div>
+        <section
+          className="system-map chapter"
+          id="system-map"
+          data-chapter
+        >
+          <SystemMap />
         </section>
 
-        <SystemIndex />
+        <PhilosophySection />
 
         <section className="experience chapter" id="experience" data-chapter>
           <div className="experience__heading">

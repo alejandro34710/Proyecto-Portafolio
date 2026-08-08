@@ -1,74 +1,162 @@
-import { Menu, X } from 'lucide-react'
-import { motion } from 'motion/react'
-import { useState } from 'react'
+import { Menu, Moon, Sun, X } from 'lucide-react'
+import { motion, useMotionValueEvent, useScroll } from 'motion/react'
+import { useRef, useState } from 'react'
+import { useLocale } from '@/hooks/useLocale'
 import { useTheme } from '@/hooks/useTheme'
+import type { Locale } from '@/i18n'
 
-const navItems = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Architecture', href: '#architecture' },
-  { label: 'AI', href: '#ai' },
-  { label: 'Lab', href: '#lab' },
-  { label: 'Journal', href: '#journal' },
-  { label: 'Contact', href: '#contact' },
+const navHrefs = [
+  { key: 'home', href: '#hero', index: '01', section: 'hero' },
+  { key: 'projects', href: '#projects', index: '02', section: 'projects' },
+  {
+    key: 'architecture',
+    href: '#architecture',
+    index: '03',
+    section: 'architecture',
+  },
+  { key: 'ai', href: '#ai', index: '04', section: 'ai' },
+  { key: 'lab', href: '#lab', index: '05', section: 'lab' },
+  { key: 'journal', href: '#journal', index: '06', section: 'journal' },
+  { key: 'contact', href: '#contact', index: '07', section: 'contact' },
 ] as const
 
-export function HeroHeader({ activeSection }: { activeSection: string }) {
+type HeroHeaderProps = {
+  activeSection: string
+}
+
+export function HeroHeader({ activeSection }: HeroHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastY = useRef(0)
+  const { scrollY } = useScroll()
   const { resolvedTheme, setTheme } = useTheme()
+  const { locale, setLocale, t } = useLocale()
   const isDark = resolvedTheme === 'dark'
 
-  return (
-    <header className="hero-header">
-      <a className="hero-header__brand" href="#hero" aria-label="Ir al inicio">
-        SYSTEM <span>/</span> 01
-      </a>
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = lastY.current
+    const delta = latest - previous
 
-      <nav className="hero-header__nav" aria-label="Navegación principal">
-        {navItems.map((item, index) => {
-          const sectionId = item.href.replace('#', '')
-          return (
-            <span key={item.label} className="hero-header__nav-item">
-              {index > 0 && (
-                <span className="hero-header__dot" aria-hidden="true">
-                  ·
-                </span>
-              )}
+    if (menuOpen || latest < 28) {
+      setHidden(false)
+    } else if (delta > 6) {
+      setHidden(true)
+    } else if (delta < -6) {
+      setHidden(false)
+    }
+
+    lastY.current = latest
+  })
+
+  const setLanguage = (next: Locale) => {
+    setLocale(next)
+  }
+
+  const toggleTheme = () => {
+    setTheme(isDark ? 'light' : 'dark')
+  }
+
+  return (
+    <motion.header
+      className="hero-header"
+      initial={false}
+      animate={hidden ? 'hidden' : 'visible'}
+      variants={{
+        visible: {
+          y: 0,
+          opacity: 1,
+          pointerEvents: 'auto',
+        },
+        hidden: {
+          y: -28,
+          opacity: 0,
+          pointerEvents: 'none',
+        },
+      }}
+      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="hero-header__shell">
+        <a className="hero-header__brand" href="#hero" aria-label="Ir al inicio">
+          <span className="hero-header__logo" aria-hidden="true">
+            A
+          </span>
+          <span className="hero-header__brand-text">
+            {t.header.brand} <span>/ 01</span>
+          </span>
+        </a>
+
+        <nav className="hero-header__nav" aria-label="Navegación principal">
+          {navHrefs.map((item) => {
+            const label = t.header.nav[item.key]
+            const isActive =
+              activeSection === item.section ||
+              (item.section === 'hero' &&
+                (activeSection === 'hero' || activeSection === 'system-map'))
+            return (
               <a
-                className={activeSection === sectionId ? 'is-active' : ''}
+                key={item.key}
+                className={`hero-header__link${isActive ? ' is-active' : ''}`}
                 href={item.href}
               >
-                {item.label}
+                <span className="hero-header__index">{item.index}</span>
+                <span className="hero-header__label">{label}</span>
               </a>
-            </span>
-          )
-        })}
-      </nav>
+            )
+          })}
+        </nav>
 
-      <div className="hero-header__controls">
-        <div className="hero-header__theme">
-          <span>Theme</span>
+        <div className="hero-header__controls">
+          <div
+            className="hero-header__lang"
+            role="group"
+            aria-label={t.meta.language}
+          >
+            <button
+              type="button"
+              className={locale === 'en' ? 'is-active' : ''}
+              onClick={() => setLanguage('en')}
+              aria-pressed={locale === 'en'}
+            >
+              EN
+            </button>
+            <span aria-hidden="true">/</span>
+            <button
+              type="button"
+              className={locale === 'es' ? 'is-active' : ''}
+              onClick={() => setLanguage('es')}
+              aria-pressed={locale === 'es'}
+            >
+              ES
+            </button>
+          </div>
+
           <button
             type="button"
-            className={!isDark ? 'is-active' : ''}
-            onClick={() => setTheme('light')}
-            aria-label="Activar tema claro"
-          />
+            className="hero-header__icon-btn"
+            onClick={toggleTheme}
+            aria-label={isDark ? 'Activar tema claro' : 'Activar tema oscuro'}
+          >
+            {isDark ? (
+              <Sun size={15} strokeWidth={1.75} />
+            ) : (
+              <Moon size={15} strokeWidth={1.75} />
+            )}
+          </button>
+
           <button
+            className="hero-header__menu hero-header__icon-btn"
             type="button"
-            className={isDark ? 'is-active' : ''}
-            onClick={() => setTheme('dark')}
-            aria-label="Activar tema oscuro"
-          />
+            aria-label={menuOpen ? 'Cerrar navegación' : 'Abrir navegación'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((current) => !current)}
+          >
+            {menuOpen ? (
+              <X size={16} strokeWidth={1.75} />
+            ) : (
+              <Menu size={16} strokeWidth={1.75} />
+            )}
+          </button>
         </div>
-        <button
-          className="hero-header__menu"
-          type="button"
-          aria-label={menuOpen ? 'Cerrar navegación' : 'Abrir navegación'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((current) => !current)}
-        >
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
       </div>
 
       <motion.div
@@ -80,16 +168,17 @@ export function HeroHeader({ activeSection }: { activeSection: string }) {
           closed: { opacity: 0, y: -10, pointerEvents: 'none' },
         }}
       >
-        {navItems.map((item) => (
+        {navHrefs.map((item) => (
           <a
             href={item.href}
-            key={item.label}
+            key={item.key}
             onClick={() => setMenuOpen(false)}
           >
-            {item.label}
+            <span>{item.index}</span>
+            {t.header.nav[item.key]}
           </a>
         ))}
       </motion.div>
-    </header>
+    </motion.header>
   )
 }

@@ -7,7 +7,7 @@ export function MainLayout() {
   const isHome = pathname === '/'
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className={isHome ? 'min-h-screen bg-[#fafafa] dark:bg-[#121212]' : 'min-h-screen bg-background'}>
       <main>
         {isHome ? (
           <PageTransition>

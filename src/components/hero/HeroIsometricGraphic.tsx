@@ -14,61 +14,61 @@ const lightTechCallouts: readonly TechCallout[] = [
     id: 'frontend',
     category: 'FRONTEND',
     tools: ['React', 'TypeScript'],
-    x: 218,
-    y: 286,
-    anchorX: 418,
+    x: 292,
+    y: 278,
+    anchorX: 448,
     anchorY: 339,
-    connector: 'M 218 310 H 418 V 339',
+    connector: 'M 292 302 H 448 V 339',
   },
   {
     id: 'backend',
     category: 'BACKEND',
     tools: ['NestJS', 'Node.js'],
-    x: 136,
-    y: 546,
-    anchorX: 341,
+    x: 268,
+    y: 512,
+    anchorX: 372,
     anchorY: 451,
-    connector: 'M 136 570 H 341 V 451',
+    connector: 'M 268 536 H 372 V 451',
   },
   {
     id: 'database',
     category: 'DATABASE',
     tools: ['PostgreSQL'],
-    x: 232,
-    y: 730,
-    anchorX: 375,
+    x: 298,
+    y: 668,
+    anchorX: 398,
     anchorY: 579,
-    connector: 'M 232 754 H 375 V 579',
+    connector: 'M 298 692 H 398 V 579',
   },
   {
     id: 'cloud',
     category: 'CLOUD',
     tools: ['GCP', 'Cloud Run', 'Cloud SQL'],
-    x: 1518,
+    x: 1488,
     y: 264,
     anchorX: 1471,
     anchorY: 164,
-    connector: 'M 1518 288 H 1471 V 164',
+    connector: 'M 1488 288 H 1471 V 164',
   },
   {
     id: 'ai',
     category: 'AI LAYER',
     tools: ['Gemini', 'AI APIs'],
-    x: 1518,
+    x: 1488,
     y: 528,
     anchorX: 1398,
     anchorY: 562,
-    connector: 'M 1518 552 H 1398 V 562',
+    connector: 'M 1488 552 H 1398 V 562',
   },
   {
     id: 'infrastructure',
     category: 'INFRASTRUCTURE',
     tools: ['Docker', 'CI / CD'],
-    x: 1518,
-    y: 724,
+    x: 1488,
+    y: 700,
     anchorX: 1578,
     anchorY: 648,
-    connector: 'M 1518 748 H 1578 V 648',
+    connector: 'M 1488 724 H 1578 V 648',
   },
 ] as const
 
@@ -77,61 +77,61 @@ const darkTechCallouts: readonly TechCallout[] = [
     id: 'frontend',
     category: 'FRONTEND',
     tools: ['React', 'TypeScript'],
-    x: 250,
-    y: 300,
-    anchorX: 440,
+    x: 310,
+    y: 290,
+    anchorX: 460,
     anchorY: 343,
-    connector: 'M 250 324 H 440 V 343',
+    connector: 'M 310 314 H 460 V 343',
   },
   {
     id: 'backend',
     category: 'BACKEND',
     tools: ['NestJS', 'Node.js'],
-    x: 150,
-    y: 565,
-    anchorX: 364,
+    x: 280,
+    y: 530,
+    anchorX: 390,
     anchorY: 438,
-    connector: 'M 150 589 H 364 V 438',
+    connector: 'M 280 554 H 390 V 438',
   },
   {
     id: 'database',
     category: 'DATABASE',
     tools: ['PostgreSQL'],
-    x: 245,
-    y: 752,
-    anchorX: 401,
+    x: 310,
+    y: 680,
+    anchorX: 420,
     anchorY: 555,
-    connector: 'M 245 776 H 401 V 555',
+    connector: 'M 310 704 H 420 V 555',
   },
   {
     id: 'cloud',
     category: 'CLOUD',
     tools: ['GCP', 'Cloud Run', 'Cloud SQL'],
-    x: 1500,
+    x: 1470,
     y: 275,
     anchorX: 1433,
     anchorY: 176,
-    connector: 'M 1500 299 H 1433 V 176',
+    connector: 'M 1470 299 H 1433 V 176',
   },
   {
     id: 'ai',
     category: 'AI LAYER',
     tools: ['Gemini', 'AI APIs'],
-    x: 1485,
+    x: 1470,
     y: 545,
     anchorX: 1344,
     anchorY: 554,
-    connector: 'M 1485 569 H 1344 V 554',
+    connector: 'M 1470 569 H 1344 V 554',
   },
   {
     id: 'infrastructure',
     category: 'INFRASTRUCTURE',
     tools: ['Docker', 'CI / CD'],
-    x: 1485,
-    y: 740,
+    x: 1470,
+    y: 710,
     anchorX: 1520,
     anchorY: 642,
-    connector: 'M 1485 764 H 1520 V 642',
+    connector: 'M 1470 734 H 1520 V 642',
   },
 ] as const
 
@@ -192,9 +192,10 @@ export function HeroIsometricGraphic() {
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
-          <radialGradient id="hero-quiet-zone">
+          <radialGradient id="hero-quiet-zone" cx="50%" cy="48%" r="50%">
             <stop offset="0" stopColor="var(--home-bg)" stopOpacity="1" />
-            <stop offset="0.58" stopColor="var(--home-bg)" stopOpacity="0.96" />
+            <stop offset="0.42" stopColor="var(--home-bg)" stopOpacity="1" />
+            <stop offset="0.72" stopColor="var(--home-bg)" stopOpacity="0.88" />
             <stop offset="1" stopColor="var(--home-bg)" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -217,15 +218,10 @@ export function HeroIsometricGraphic() {
         <ellipse
           className="hero-system-map__quiet-zone"
           cx="929"
-          cy="443.5"
-          rx="390"
+          cy="420"
+          rx="420"
           ry="210"
         />
-        <g className="hero-system-map__center-signal">
-          <path d="M 929 520 V 700" />
-          <circle cx="929" cy="555" r="10" />
-          <circle cx="929" cy="555" r="3" />
-        </g>
         <g
           className="hero-system-map__callouts hero-system-map__callouts--light"
           transform="translate(0 20.5)"

@@ -1,84 +1,65 @@
 import { useEffect, useState } from 'react'
+import { ArrowDown } from 'lucide-react'
+import { useLocale } from '@/hooks/useLocale'
 
 const consoleLines = [
-  '> Initializing portfolio system...',
-  '> Loading modules',
-  '> Establishing connections',
-  '> System ready.',
-]
+  'Initializing...',
+  'Loading modules...',
+  'Ready.',
+] as const
 
-function useLiveClock() {
-  const [time, setTime] = useState(() => formatTime(new Date()))
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setTime(formatTime(new Date()))
-    }, 1000)
-    return () => window.clearInterval(interval)
-  }, [])
-
-  return time
-}
-
-function formatTime(date: Date) {
-  return date.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true,
-  })
-}
+const stack = [
+  'React',
+  'NestJS',
+  'PostgreSQL',
+  'Cloud Run',
+  'AI',
+] as const
 
 export function SystemStatusBar() {
-  const time = useLiveClock()
+  const { t } = useLocale()
   const [visibleLines, setVisibleLines] = useState(1)
 
   useEffect(() => {
     if (visibleLines >= consoleLines.length) return
-
     const timeout = window.setTimeout(() => {
       setVisibleLines((current) => current + 1)
-    }, 700)
-
+    }, 780)
     return () => window.clearTimeout(timeout)
   }, [visibleLines])
 
   return (
-    <footer className="system-status-bar" aria-label="System status">
-      <div className="system-status-bar__console">
-        <span className="system-status-bar__label">SYSTEM CONSOLE</span>
-        <div className="system-status-bar__logs">
-          {consoleLines.slice(0, visibleLines).map((line) => (
-            <code key={line}>{line}</code>
-          ))}
+    <footer className="hero-dock" aria-label="System status">
+      <div className="hero-dock__console" aria-hidden="true">
+        <span>{t.hero.consoleLabel}</span>
+        {consoleLines.slice(0, visibleLines).map((line) => (
+          <code key={line}>{line}</code>
+        ))}
+      </div>
+
+      <div className="hero-dock__band">
+        <div className="hero-dock__status">
+          <span className="hero-dock__system">{t.hero.systemOnline}</span>
+          <span className="hero-dock__ready">
+            <i aria-hidden="true" />
+            {t.hero.ready}
+          </span>
         </div>
-      </div>
-      <div className="system-status-bar__segment">
-        <span className="system-status-bar__label">STATUS</span>
-        <span className="system-status-bar__online">
-          <i aria-hidden="true" />
-          Online
-        </span>
-      </div>
-      <div className="system-status-bar__segment">
-        <span className="system-status-bar__label">LOCATION</span>
-        <span className="system-status-bar__coords">
-          <span>Lat: -12.0464</span>
-          <span>Lng: -77.0428</span>
-        </span>
-      </div>
-      <div className="system-status-bar__segment">
-        <span className="system-status-bar__label">TIME</span>
-        <time className="system-status-bar__time" dateTime={time}>
-          {time}
-        </time>
-      </div>
-      <div className="system-status-bar__segment system-status-bar__copyright">
-        <span>© 2024 All rights reserved</span>
-        <span className="system-status-bar__pause" aria-hidden="true">
-          <i />
-          <i />
-        </span>
+
+        <div className="hero-dock__meta">
+          <strong>{t.hero.role}</strong>
+          <ul className="hero-dock__stack">
+            {stack.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <a className="hero-dock__scroll" href="#system-map">
+          <span className="hero-dock__scroll-dot" aria-hidden="true" />
+          <span>{t.hero.scroll}</span>
+          <ArrowDown size={13} strokeWidth={1.5} />
+        </a>
       </div>
     </footer>
   )
