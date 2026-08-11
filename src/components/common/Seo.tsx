@@ -32,13 +32,16 @@ export function Seo({
       <meta property="og:title" content={pageOgTitle} />
       <meta property="og:description" content={pageOgDescription} />
       <meta property="og:type" content={pageOgType} />
-      <meta property="og:url" content={pageOgUrl} />
-      <meta property="og:image" content={pageOgImage} />
+      {pageOgUrl && <meta property="og:url" content={pageOgUrl} />}
+      {pageOgImage && <meta property="og:image" content={pageOgImage} />}
 
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:card"
+        content={pageOgImage ? 'summary_large_image' : 'summary'}
+      />
       <meta name="twitter:title" content={pageOgTitle} />
       <meta name="twitter:description" content={pageOgDescription} />
-      <meta name="twitter:image" content={pageOgImage} />
+      {pageOgImage && <meta name="twitter:image" content={pageOgImage} />}
     </Helmet>
   )
 }

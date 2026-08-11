@@ -1,26 +1,28 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { Container } from '@/components/common/Container'
+import { SiteFooter } from '@/components/common/SiteFooter'
+import { HeroHeader } from '@/components/hero/HeroHeader'
 import { PageTransition } from '@/components/common/PageTransition'
+import '@/styles/portfolio-shell.css'
 
 export function MainLayout() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
+  const isContact = pathname === '/contact'
 
   return (
-    <div className={isHome ? 'min-h-screen bg-[#fafafa] dark:bg-[#121212]' : 'min-h-screen bg-background'}>
-      <main>
-        {isHome ? (
-          <PageTransition>
-            <Outlet />
-          </PageTransition>
-        ) : (
-          <Container>
-            <PageTransition>
-              <Outlet />
-            </PageTransition>
-          </Container>
-        )}
+    <div
+      className={`portfolio-shell${isHome ? ' portfolio-shell--home' : ''}${
+        isContact ? ' portfolio-shell--contact' : ''
+      }`}
+    >
+      <span id="top" />
+      <HeroHeader />
+      <main className="portfolio-shell__main">
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
+      <SiteFooter />
     </div>
   )
 }

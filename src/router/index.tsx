@@ -2,17 +2,6 @@ import { createBrowserRouter } from 'react-router-dom'
 import { ROUTES } from '@/config/routes.config'
 import { RootLayout } from '@/layouts/RootLayout'
 import { MainLayout } from '@/layouts/MainLayout'
-import { AboutPage } from '@/pages/AboutPage'
-import { ArchitecturePage } from '@/pages/ArchitecturePage'
-import { BlogPage } from '@/pages/BlogPage'
-import { ContactPage } from '@/pages/ContactPage'
-import { ExperiencePage } from '@/pages/ExperiencePage'
-import { HomePage } from '@/pages/HomePage'
-import { LabPage } from '@/pages/LabPage'
-import { NotFoundPage } from '@/pages/NotFoundPage'
-import { ProjectDetailPage } from '@/pages/ProjectDetailPage'
-import { ProjectsPage } from '@/pages/ProjectsPage'
-import { SkillsPage } from '@/pages/SkillsPage'
 
 export const router = createBrowserRouter([
   {
@@ -21,19 +10,65 @@ export const router = createBrowserRouter([
       {
         element: <MainLayout />,
         children: [
-          { path: ROUTES.HOME, element: <HomePage /> },
-          { path: ROUTES.ABOUT, element: <AboutPage /> },
-          { path: ROUTES.PROJECTS, element: <ProjectsPage /> },
-          { path: ROUTES.PROJECT_DETAIL, element: <ProjectDetailPage /> },
-          { path: ROUTES.EXPERIENCE, element: <ExperiencePage /> },
-          { path: ROUTES.SKILLS, element: <SkillsPage /> },
-          { path: ROUTES.ARCHITECTURE, element: <ArchitecturePage /> },
-          { path: ROUTES.LAB, element: <LabPage /> },
-          { path: ROUTES.BLOG, element: <BlogPage /> },
-          { path: ROUTES.CONTACT, element: <ContactPage /> },
+          {
+            path: ROUTES.HOME,
+            lazy: async () => {
+              const { HomePage } = await import('@/pages/HomePage')
+              return { Component: HomePage }
+            },
+          },
+          {
+            path: ROUTES.PROJECTS,
+            lazy: async () => {
+              const { ProjectsPage } = await import('@/pages/ProjectsPage')
+              return { Component: ProjectsPage }
+            },
+          },
+          {
+            path: ROUTES.PROJECT_DETAIL,
+            lazy: async () => {
+              const { ProjectDetailPage } =
+                await import('@/pages/ProjectDetailPage')
+              return { Component: ProjectDetailPage }
+            },
+          },
+          {
+            path: ROUTES.EXPERIENCE,
+            lazy: async () => {
+              const { ExperiencePage } = await import('@/pages/ExperiencePage')
+              return { Component: ExperiencePage }
+            },
+          },
+          {
+            path: ROUTES.STACK,
+            lazy: async () => {
+              const { StackPage } = await import('@/pages/StackPage')
+              return { Component: StackPage }
+            },
+          },
+          {
+            path: ROUTES.ABOUT,
+            lazy: async () => {
+              const { AboutPage } = await import('@/pages/AboutPage')
+              return { Component: AboutPage }
+            },
+          },
+          {
+            path: ROUTES.CONTACT,
+            lazy: async () => {
+              const { ContactPage } = await import('@/pages/ContactPage')
+              return { Component: ContactPage }
+            },
+          },
         ],
       },
-      { path: '*', element: <NotFoundPage /> },
+      {
+        path: '*',
+        lazy: async () => {
+          const { NotFoundPage } = await import('@/pages/NotFoundPage')
+          return { Component: NotFoundPage }
+        },
+      },
     ],
   },
 ])

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import type { Variants } from 'motion/react'
+import { Link } from 'react-router-dom'
 import { useLocale } from '@/hooks/useLocale'
 import { SYSTEM_CHAPTERS } from './chapters'
 import { SystemMapObject } from './SystemMapObject'
@@ -132,22 +133,13 @@ export function SystemMap() {
                         <p className="system-map__panel-desc">
                           {copy.description}
                         </p>
-                        <div className="system-map__panel-meta">
-                          <span>{copy.projectCount}</span>
-                          <span>{copy.summary}</span>
-                        </div>
-                        <div className="system-map__panel-tech">
-                          {copy.technologies.map((tech) => (
-                            <i key={tech}>{tech}</i>
-                          ))}
-                        </div>
-                        <p className="system-map__panel-editorial">
-                          “{copy.editorial}”
-                        </p>
-                        <a className="system-map__panel-cta" href={`#${chapter.id}`}>
+                        <Link
+                          className="system-map__panel-cta"
+                          to={chapter.path}
+                        >
                           <ArrowRight size={14} strokeWidth={1.5} />
                           {t.systemMap.explore}
-                        </a>
+                        </Link>
                       </div>
                     </motion.div>
                   )}
@@ -157,15 +149,13 @@ export function SystemMap() {
           })}
         </motion.div>
 
-        <motion.a
-          className="system-map__scroll"
-          href="#philosophy"
-          variants={mapReveal}
-        >
-          <span className="system-map__scroll-dot" aria-hidden="true" />
-          <span>{t.systemMap.scroll}</span>
-          <ArrowDown size={14} strokeWidth={1.5} />
-        </motion.a>
+        <motion.div variants={mapReveal}>
+          <Link className="system-map__scroll" to={SYSTEM_CHAPTERS[0].path}>
+            <span className="system-map__scroll-dot" aria-hidden="true" />
+            <span>{t.systemMap.scroll}</span>
+            <ArrowDown size={14} strokeWidth={1.5} />
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div

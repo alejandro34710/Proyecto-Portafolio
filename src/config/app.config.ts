@@ -1,7 +1,8 @@
 export const APP_CONFIG = {
-  name: 'Alejandro — Full Stack Engineer',
+  name: 'Alejandro — Ingeniero Multimedia · Desarrollador Fullstack',
   description:
-    'Full Stack Engineer building complete digital products across frontend, backend, architecture, cloud and AI.',
-  baseUrl: 'https://portfolio.example.com',
+    'Ingeniero multimedia y desarrollador fullstack construyendo productos digitales completos entre frontend, backend, arquitectura, cloud e IA.',
+  /** TODO: add the verified production origin before publishing. */
+  baseUrl: '',
   defaultLocale: 'es',
 } as const

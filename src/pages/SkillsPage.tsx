@@ -1,5 +1,5 @@
-import { PlaceholderPage } from './PlaceholderPage'
-
-export function SkillsPage() {
-  return <PlaceholderPage title="Skills" />
-}
+/**
+ * Legacy placeholder kept for reference.
+ * Public route is now `/stack` via StackPage.
+ */
+export { StackPage as SkillsPage } from './StackPage'

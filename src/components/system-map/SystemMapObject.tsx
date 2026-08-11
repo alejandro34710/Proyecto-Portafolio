@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useLocale } from '@/hooks/useLocale'
+import { SYSTEM_CHAPTERS } from './chapters'
 import type { SystemChapterMeta } from './chapters'
 import type { TechLabel } from './types'
 
@@ -13,15 +14,14 @@ const techLabels: readonly TechLabel[] = [
 ] as const
 
 const chapterHighlight: Record<string, readonly TechLabel['id'][]> = {
-  philosophy: ['frontend', 'backend'],
-  experience: ['backend', 'infrastructure'],
   projects: ['frontend', 'cloud'],
-  architecture: ['backend', 'database', 'infrastructure'],
-  ai: ['ai'],
-  lab: ['ai', 'frontend'],
-  journal: ['frontend'],
+  experience: ['backend', 'infrastructure'],
+  stack: ['backend', 'database', 'cloud', 'ai'],
+  about: ['frontend', 'backend'],
   contact: ['cloud', 'infrastructure'],
 }
+
+const chapterTotal = String(SYSTEM_CHAPTERS.length).padStart(2, '0')
 
 type SystemMapObjectProps = {
   chapter: SystemChapterMeta
@@ -83,7 +83,10 @@ export function SystemMapObject({ chapter, index }: SystemMapObjectProps) {
 
         <span className="system-map-object__core-glow" aria-hidden="true" />
         <span className="system-map-object__center-pulse" aria-hidden="true" />
-        <span className="system-map-object__experience-line" aria-hidden="true" />
+        <span
+          className="system-map-object__experience-line"
+          aria-hidden="true"
+        />
 
         <div className="system-map-object__nodes" aria-hidden="true">
           <i />
@@ -100,18 +103,6 @@ export function SystemMapObject({ chapter, index }: SystemMapObjectProps) {
           <span>DATA</span>
         </div>
 
-        <div className="system-map-object__lab-card" aria-hidden="true">
-          <strong>LAB</strong>
-          <small>PROTOTYPE</small>
-        </div>
-
-        <div className="system-map-object__notes" aria-hidden="true">
-          <span>NOTE / 01</span>
-          <span>FIELD</span>
-        </div>
-
-        <div className="system-map-object__transmit" aria-hidden="true" />
-
         <svg
           className="system-map-object__connectors"
           viewBox="0 0 100 100"
@@ -121,7 +112,9 @@ export function SystemMapObject({ chapter, index }: SystemMapObjectProps) {
           {techLabels.map((label) => (
             <g key={label.id}>
               <path
-                className={activeLabels.includes(label.id) ? 'is-lit' : undefined}
+                className={
+                  activeLabels.includes(label.id) ? 'is-lit' : undefined
+                }
                 pathLength="1"
                 d={connectorPath(label)}
               />
@@ -185,7 +178,9 @@ export function SystemMapObject({ chapter, index }: SystemMapObjectProps) {
         >
           <i />
           {t.systemMap.status}
-          <span>{String(index + 1).padStart(2, '0')} / 08</span>
+          <span>
+            {String(index + 1).padStart(2, '0')} / {chapterTotal}
+          </span>
         </motion.div>
       </AnimatePresence>
     </motion.div>

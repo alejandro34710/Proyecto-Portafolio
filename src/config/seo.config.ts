@@ -5,5 +5,6 @@ export const SEO_DEFAULTS = {
   description: APP_CONFIG.description,
   ogType: 'website',
   ogUrl: APP_CONFIG.baseUrl,
-  ogImage: `${APP_CONFIG.baseUrl}/og-image.png`,
+  /** TODO: add a real social preview once the production URL is known. */
+  ogImage: '',
 } as const
