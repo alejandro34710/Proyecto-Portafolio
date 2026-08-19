@@ -114,20 +114,114 @@ export type Dictionary = {
     eyebrow: string
     titleLine1: string
     titleLine2: string
+    titleLine3: string
     lede: string
-    company: string
-    role: string
-    period: string
-    technologies: string
-    related: string
-    todoLabel: string
-    todoBody: string
+    snapshot: {
+      title: string
+      experiencesLabel: string
+      startLabel: string
+      roleLabel: string
+      baseLabel: string
+      currentFocus: string
+      currentlyBuilding: string
+    }
+    timeline: {
+      eyebrow: string
+      title: string
+      lede: string
+      now: string
+    }
+    scopeOfWork: string
+    whatIDo: string
+    techRailLabel: string
+    evolution: {
+      eyebrow: string
+      title: string
+      body1: string
+      body2: string
+      stages: {
+        operations: string
+        data: string
+        product: string
+        fullStack: string
+        cloud: string
+        ai: string
+      }
+    }
+    currentScope: {
+      eyebrow: string
+      title: string
+      stages: {
+        discover: { label: string; detail: string }
+        design: { label: string; detail: string }
+        build: { label: string; detail: string }
+        ship: { label: string; detail: string }
+        operate: { label: string; detail: string }
+        improve: { label: string; detail: string }
+      }
+    }
+    principles: {
+      title: string
+      items: readonly {
+        index: string
+        title: string
+        body: string
+      }[]
+    }
+    cta: {
+      kicker: string
+      titleLine1: string
+      titleLine2: string
+      lede: string
+      primary: string
+      secondary: string
+    }
   }
   stackPage: {
     eyebrow: string
     titleLine1: string
     titleLine2: string
+    titleLine3: string
     lede: string
+    overview: {
+      eyebrow: string
+      titleLine1: string
+      titleLine2: string
+      lede: string
+      indexTitle: string
+    }
+    coreTechnologies: string
+    toolkit: {
+      eyebrow: string
+      titleLine1: string
+      titleLine2: string
+      lede: string
+    }
+    systemFlow: {
+      eyebrow: string
+      titleLine1: string
+      titleLine2: string
+      lede: string
+    }
+    coreStack: {
+      eyebrow: string
+      titleLine1: string
+      titleLine2: string
+    }
+    principle: {
+      eyebrow: string
+      titleLine1: string
+      titleLine2: string
+      body: string
+    }
+    cta: {
+      kicker: string
+      titleLine1: string
+      titleLine2: string
+      lede: string
+      primary: string
+      secondary: string
+    }
   }
   about: {
     eyebrow: string

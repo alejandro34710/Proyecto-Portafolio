@@ -144,6 +144,9 @@ const copy = {
     viewWork: 'View projects',
     contact: 'Talk with me',
     role: 'Fullstack Developer',
+    location: 'Colombia / Remote',
+    focus: 'Product · Cloud · AI',
+    workEyebrow: '[ 01 / SELECTED SYSTEMS ]',
     workTitleA: 'Software built to',
     workTitleB: 'work in the real world.',
     workBody:
