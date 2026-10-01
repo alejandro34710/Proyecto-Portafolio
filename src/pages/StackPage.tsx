@@ -1,54 +1,35 @@
+import { useState } from 'react'
 import { Seo } from '@/components/common/Seo'
 import {
-  CapabilityRail,
-  CapabilitySection,
   CoreStack,
-  DeliveryFlow,
   EngineeringToolkit,
-  FlowDiagram,
   StackCTA,
   StackHero,
   StackOverview,
   StackPrinciple,
-  SystemFlowSection,
-  TechnologyList,
+  StackSystemStudio,
 } from '@/components/stack'
-import { stackCapabilities } from '@/data/stack'
 import { useLocale } from '@/hooks/useLocale'
+import type { StackGroupId } from '@/data/types'
 import '@/styles/stack.css'
 
 export function StackPage() {
   const { t } = useLocale()
+  const [selectedLayerId, setSelectedLayerId] =
+    useState<StackGroupId>('interface')
 
   return (
     <div className="page-shell stack-page">
       <Seo title={t.header.nav.stack} description={t.stackPage.lede} />
 
-      <StackHero />
+      <StackHero onSelectLayer={setSelectedLayerId} />
       <StackOverview />
-
-      {stackCapabilities.map((capability) => (
-        <CapabilitySection key={capability.id} capability={capability}>
-          <TechnologyList
-            featured={capability.featured}
-            tags={capability.tags}
-            highlights={capability.gcpHighlights}
-          />
-          {capability.id === 'cloud' && capability.flow ? (
-            <DeliveryFlow nodes={capability.flow} />
-          ) : capability.flow ? (
-            <FlowDiagram
-              nodes={capability.flow}
-              orientation={capability.flowOrientation}
-            />
-          ) : null}
-          <CapabilityRail items={capability.rail} label={capability.kicker} />
-        </CapabilitySection>
-      ))}
-
-      <EngineeringToolkit />
-      <SystemFlowSection />
+      <StackSystemStudio
+        selectedLayerId={selectedLayerId}
+        onSelectLayer={setSelectedLayerId}
+      />
       <CoreStack />
+      <EngineeringToolkit />
       <StackPrinciple />
       <StackCTA />
     </div>

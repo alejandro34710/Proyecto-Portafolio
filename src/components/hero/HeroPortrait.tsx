@@ -12,24 +12,24 @@ const spring = { stiffness: 95, damping: 20, mass: 0.7 }
 
 const portraitCopy = {
   es: {
-    alt: 'Alejandro — Ingeniero Multimedia y Desarrollador Fullstack',
+    alt: 'Alejandro — Desarrollador Full Stack, Ingeniero Multimedia',
     identityLabel: 'Perfil',
     identityName: 'Alejandro',
-    identityRole: 'Ingeniero Multimedia',
+    identityRole: 'Desarrollador Full Stack',
     focusLabel: 'Enfoque',
     focusItems: ['Producto', 'Cloud', 'IA'],
     statusLabel: 'Estado',
-    statusValue: 'Disponible',
+    statusValue: 'Abierto',
   },
   en: {
-    alt: 'Alejandro — Multimedia Engineer and Fullstack Developer',
+    alt: 'Alejandro — Full Stack Developer, Multimedia Engineer',
     identityLabel: 'Profile',
     identityName: 'Alejandro',
-    identityRole: 'Multimedia Engineer',
+    identityRole: 'Full Stack Developer',
     focusLabel: 'Focus',
     focusItems: ['Product', 'Cloud', 'AI'],
     statusLabel: 'Status',
-    statusValue: 'Available',
+    statusValue: 'Open',
   },
 } as const
 

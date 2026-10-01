@@ -13,10 +13,28 @@ function applyDocumentLang(locale: Locale) {
   document.documentElement.lang = locale
 }
 
+function getInitialLocale(): Locale {
+  if (typeof window !== 'undefined') {
+    if (
+      window.location.search.includes('lang=es') ||
+      window.location.search.includes('locale=es')
+    ) {
+      return 'es'
+    }
+    if (
+      window.location.search.includes('lang=en') ||
+      window.location.search.includes('locale=en')
+    ) {
+      return 'en'
+    }
+  }
+  return defaultLocale
+}
+
 export const useLocaleStore = create<LocaleState>()(
   persist(
     (set) => ({
-      locale: defaultLocale,
+      locale: getInitialLocale(),
       setLocale: (locale) => {
         applyDocumentLang(locale)
         set({ locale })

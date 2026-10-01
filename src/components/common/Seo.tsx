@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
-import { APP_CONFIG } from '@/config/app.config'
+import { IDENTITY } from '@/config/identity.config'
 import { SEO_DEFAULTS } from '@/config/seo.config'
+import { useLocale } from '@/hooks/useLocale'
 import type { SeoMeta } from '@/types'
 
 type SeoProps = SeoMeta
@@ -15,7 +16,9 @@ export function Seo({
   ogImage,
   noIndex = false,
 }: SeoProps) {
-  const pageTitle = title ? `${title} | ${APP_CONFIG.name}` : SEO_DEFAULTS.title
+  const { locale } = useLocale()
+  const siteName = `${IDENTITY.name} — ${IDENTITY.role[locale]}`
+  const pageTitle = title ? `${title} | ${siteName}` : siteName
   const pageDescription = description ?? SEO_DEFAULTS.description
   const pageOgTitle = ogTitle ?? pageTitle
   const pageOgDescription = ogDescription ?? pageDescription

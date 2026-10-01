@@ -1,6 +1,7 @@
-import { stackToolkit } from '@/data/stack'
-import { getLocalized } from '@/data/projects'
+import { TechIcon } from '@/components/common/TechIcon'
 import { Reveal } from '@/components/design-system'
+import { getLocalized } from '@/data/projects'
+import { stackToolkit } from '@/data/stack'
 import { useLocale } from '@/hooks/useLocale'
 
 export function EngineeringToolkit() {
@@ -28,14 +29,9 @@ export function EngineeringToolkit() {
               aria-hidden={index >= stackToolkit.length || undefined}
             >
               {item.slug && (
-                <img
-                  src={`https://cdn.simpleicons.org/${item.slug}`}
-                  alt=""
-                  width={16}
-                  height={16}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div className="stack-toolkit__icon">
+                  <TechIcon slug={item.slug} size={16} />
+                </div>
               )}
               <strong>{item.name}</strong>
               <span>{getLocalized(item.role, locale)}</span>

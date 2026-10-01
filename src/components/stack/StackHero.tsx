@@ -1,13 +1,18 @@
 import { Reveal } from '@/components/design-system'
 import { useLocale } from '@/hooks/useLocale'
-import { StackSystemVisual } from './StackSystemVisual'
+import { StackHeroBlueprint } from './StackHeroBlueprint'
+import type { StackGroupId } from '@/data/types'
 
-export function StackHero() {
+type StackHeroProps = {
+  onSelectLayer?: (id: StackGroupId) => void
+}
+
+export function StackHero({ onSelectLayer }: StackHeroProps) {
   const { t } = useLocale()
 
   return (
     <header className="stack-page__hero">
-      <Reveal preset="slideUp">
+      <Reveal preset="slideUp" className="stack-hero__copy">
         <p className="page-eyebrow">{t.stackPage.eyebrow}</p>
         <h1 className="page-title stack-hero__title">
           {t.stackPage.titleLine1}
@@ -20,8 +25,8 @@ export function StackHero() {
         <p className="page-lede stack-hero__lede">{t.stackPage.lede}</p>
       </Reveal>
 
-      <Reveal preset="slideLeft">
-        <StackSystemVisual />
+      <Reveal preset="slideLeft" className="stack-hero__visual">
+        <StackHeroBlueprint onSelectLayer={onSelectLayer} />
       </Reveal>
     </header>
   )

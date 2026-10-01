@@ -156,3 +156,30 @@ export type StackSystemNode = {
   label: string
   stack: string
 }
+
+export type StackProjectProof = {
+  name: string
+  slug: string
+}
+
+export type StackLayerArchitecture = {
+  id: StackGroupId
+  index: string
+  isTransversal?: boolean
+  kicker: string
+  name: LocalizedString
+  tagline: LocalizedString
+  lede: LocalizedString
+  coreTech: readonly StackFeaturedTech[]
+  supportingTech: readonly string[]
+  capabilities: readonly LocalizedString[]
+  interconnection: LocalizedString
+  aiRelationship?: LocalizedString
+  projectProofs: readonly StackProjectProof[]
+  pipeline: {
+    from: LocalizedString
+    receives: LocalizedString
+    produces: LocalizedString
+    to: LocalizedString
+  }
+}

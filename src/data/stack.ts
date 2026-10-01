@@ -3,10 +3,533 @@ import type {
   StackCoreItem,
   StackDomain,
   StackGroup,
+  StackLayerArchitecture,
   StackSystemNode,
   StackToolkitItem,
 } from './types'
 
+/**
+ * 6 Core Technologies that form Alejandro's technical nucleus.
+ */
+export const stackCore: readonly StackCoreItem[] = [
+  {
+    index: '01',
+    name: 'REACT',
+    slug: 'react',
+    category: { es: 'FRONTEND & INTERFAZ', en: 'FRONTEND & INTERFACE' },
+  },
+  {
+    index: '02',
+    name: 'TYPESCRIPT',
+    slug: 'typescript',
+    category: { es: 'LENGUAJE & TIPADO', en: 'TYPED LANGUAGE' },
+  },
+  {
+    index: '03',
+    name: 'NESTJS',
+    slug: 'nestjs',
+    category: { es: 'BACKEND & APIS', en: 'BACKEND & APIS' },
+  },
+  {
+    index: '04',
+    name: 'POSTGRESQL',
+    slug: 'postgresql',
+    category: { es: 'DATOS & PERSISTENCIA', en: 'DATA & PERSISTENCE' },
+  },
+  {
+    index: '05',
+    name: 'DOCKER',
+    slug: 'docker',
+    category: { es: 'CONTENEDORES', en: 'CONTAINERIZATION' },
+  },
+  {
+    index: '06',
+    name: 'GOOGLE CLOUD',
+    slug: 'googlecloud',
+    category: { es: 'INFRAESTRUCTURA CLOUD', en: 'CLOUD INFRASTRUCTURE' },
+  },
+]
+
+/**
+ * Connected Architectural Layers (4 Core Layers + Transversal AI Capability).
+ * This is the central source of truth for the interactive system studio.
+ */
+export const stackLayersArchitecture: readonly StackLayerArchitecture[] = [
+  {
+    id: 'interface',
+    index: '01',
+    isTransversal: false,
+    kicker: 'LAYER 01 // INTERFACE',
+    name: {
+      es: 'Capa de Interfaz & Experiencia',
+      en: 'Interface & Experience Layer',
+    },
+    tagline: {
+      es: 'Arquitectura frontend, sistemas modulares y precisión visual.',
+      en: 'Frontend architecture, modular systems, and visual precision.',
+    },
+    lede: {
+      es: 'Diseño e implemento interfaces web reactivas y accesibles con React, TypeScript y Tailwind CSS. Me enfoco en desacoplar el estado del render, estructurar componentes reutilizables y garantizar rendimiento real en producción.',
+      en: 'I design and implement responsive, accessible web interfaces with React, TypeScript, and Tailwind CSS. I focus on decoupling state from render, structuring reusable components, and ensuring real-world performance.',
+    },
+    coreTech: [
+      {
+        name: 'React',
+        slug: 'react',
+        role: {
+          es: 'Arquitectura modular basada en componentes y estado reactivo',
+          en: 'Modular component-based architecture and reactive state',
+        },
+      },
+      {
+        name: 'TypeScript',
+        slug: 'typescript',
+        role: {
+          es: 'Tipado estricto e integración de contratos con APIs',
+          en: 'Strict typing and contract integration with APIs',
+        },
+      },
+    ],
+    supportingTech: [
+      'Tailwind CSS',
+      'Vite',
+      'JavaScript',
+      'HTML5 / CSS3',
+      'Responsive UX/UI',
+    ],
+    capabilities: [
+      {
+        es: 'Arquitectura modular basada en componentes y design tokens reutilizables',
+        en: 'Modular architecture based on components and reusable design tokens',
+      },
+      {
+        es: 'Consumo tipado de APIs REST con manejo robusto de estados asíncronos',
+        en: 'Typed REST API consumption with resilient async state handling',
+      },
+      {
+        es: 'Diseño responsivo, accesibilidad (a11y) y optimización de carga en cliente',
+        en: 'Responsive design, accessibility (a11y), and client-side load optimization',
+      },
+    ],
+    interconnection: {
+      es: 'Captura interacciones del usuario, transforma requerimientos de producto en vistas reactivas y consume endpoints de la capa de Servicios mediante contratos tipados.',
+      en: 'Captures user interactions, transforms product requirements into reactive views, and consumes Services endpoints via typed contracts.',
+    },
+    aiRelationship: {
+      es: 'Integra interfaces con streaming de respuestas de IA, controles asistidos y visualización interactiva de resultados estructurados.',
+      en: 'Integrates interfaces with AI streaming responses, assisted controls, and interactive visualization of structured results.',
+    },
+    projectProofs: [
+      { name: 'NOVEX', slug: 'novex' },
+      { name: 'Actas', slug: 'actas' },
+      { name: 'Evaluaciones', slug: 'evaluaciones' },
+    ],
+    pipeline: {
+      from: { es: 'Usuario & Requerimiento', en: 'User & Requirement' },
+      receives: {
+        es: 'Eventos de UI, formularios, navegación',
+        en: 'UI events, forms, navigation',
+      },
+      produces: {
+        es: 'Peticiones HTTP tipadas, mutaciones de estado',
+        en: 'Typed HTTP requests, state mutations',
+      },
+      to: { es: 'Backend & APIs', en: 'Backend & APIs' },
+    },
+  },
+  {
+    id: 'backend',
+    index: '02',
+    isTransversal: false,
+    kicker: 'LAYER 02 // SERVICES & APIS',
+    name: {
+      es: 'Capa de Servicios & Lógica de Negocio',
+      en: 'Services & Business Logic Layer',
+    },
+    tagline: {
+      es: 'APIs estructuradas, separación de dominios y control de acceso.',
+      en: 'Structured APIs, domain separation, and access control.',
+    },
+    lede: {
+      es: 'Construyo servicios backend con NestJS y Node.js orientados a desacoplar controladores de servicios de dominio, estructurar validaciones mediante DTOs y asegurar autenticación JWT con control de roles.',
+      en: 'I build backend services with NestJS and Node.js designed to decouple controllers from domain services, enforce DTO validations, and secure JWT authentication with role control.',
+    },
+    coreTech: [
+      {
+        name: 'NestJS',
+        slug: 'nestjs',
+        role: {
+          es: 'Arquitectura modular, inyección de dependencias y servicios',
+          en: 'Modular architecture, dependency injection, and services',
+        },
+      },
+      {
+        name: 'Node.js',
+        slug: 'nodedotjs',
+        role: {
+          es: 'Entorno de ejecución de alto rendimiento asíncrono',
+          en: 'High-performance asynchronous runtime',
+        },
+      },
+    ],
+    supportingTech: [
+      'REST APIs',
+      'TypeORM',
+      'JWT Authentication',
+      'Validation DTOs',
+      'Error Handling',
+    ],
+    capabilities: [
+      {
+        es: 'Diseño de contratos RESTful limpios y desacoplados del cliente',
+        en: 'Clean RESTful contract design decoupled from client views',
+      },
+      {
+        es: 'Lógica de negocio encapsulada con validación estricta de entradas',
+        en: 'Encapsulated business logic with strict input validation',
+      },
+      {
+        es: 'Seguridad mediante autenticación JWT, guards y permisos de usuario',
+        en: 'Security via JWT authentication, guards, and user permissions',
+      },
+    ],
+    interconnection: {
+      es: 'Valida las peticiones recibidas del frontend, ejecuta las reglas de negocio institucionales y delega la persistencia a PostgreSQL a través de TypeORM.',
+      en: 'Validates requests received from frontend, executes institutional business rules, and delegates persistence to PostgreSQL through TypeORM.',
+    },
+    aiRelationship: {
+      es: 'Orquesta pipelines de modelos de IA (Gemini), ensambla contextos, gestiona cuotas y garantiza respuestas en esquemas JSON estructurados.',
+      en: 'Orchestrates AI model pipelines (Gemini), context assembly, rate quota management, and guaranteed structured JSON output schemas.',
+    },
+    projectProofs: [
+      { name: 'NOVEX', slug: 'novex' },
+      { name: 'Actas', slug: 'actas' },
+      { name: 'Entrevistas', slug: 'entrevistas' },
+    ],
+    pipeline: {
+      from: { es: 'Interfaz Frontend', en: 'Frontend Interface' },
+      receives: {
+        es: 'Payloads REST, tokens JWT, parámetros de consulta',
+        en: 'REST payloads, JWT tokens, query parameters',
+      },
+      produces: {
+        es: 'Operaciones de base de datos, respuestas estructuradas',
+        en: 'Database operations, structured responses',
+      },
+      to: { es: 'Capa de Datos (PostgreSQL)', en: 'Data Layer (PostgreSQL)' },
+    },
+  },
+  {
+    id: 'data',
+    index: '03',
+    isTransversal: false,
+    kicker: 'LAYER 03 // DATA & PERSISTENCE',
+    name: {
+      es: 'Capa de Datos & Persistencia Relacional',
+      en: 'Data & Relational Persistence Layer',
+    },
+    tagline: {
+      es: 'Modelado relacional, integridad transaccional y consultas optimizadas.',
+      en: 'Relational modeling, transactional integrity, and query optimization.',
+    },
+    lede: {
+      es: 'Trato los datos como el cimiento crítico del sistema. Trabajo con PostgreSQL y SQL desde el diseño del esquema relacional y llaves foráneas hasta migraciones de esquemas en producción y optimización de índices para reportes operativos.',
+      en: 'I treat data as the system foundation. I work with PostgreSQL and SQL from relational schema design and foreign keys through production schema migrations and index optimization for operational reporting.',
+    },
+    coreTech: [
+      {
+        name: 'PostgreSQL',
+        slug: 'postgresql',
+        role: {
+          es: 'Motor de base de datos relacional y transaccional',
+          en: 'Relational and transactional database engine',
+        },
+      },
+      {
+        name: 'SQL',
+        slug: 'sql',
+        role: {
+          es: 'Consultas avanzadas, índices y análisis de datos',
+          en: 'Advanced queries, indexes, and data analysis',
+        },
+      },
+    ],
+    supportingTech: [
+      'TypeORM Migrations',
+      'Schema Modeling',
+      'Data Normalization',
+      'Integrity Constraints',
+    ],
+    capabilities: [
+      {
+        es: 'Modelado relacional limpio con normalización y reglas de integridad',
+        en: 'Clean relational modeling with normalization and integrity constraints',
+      },
+      {
+        es: 'Migraciones de esquemas versionadas y controladas para producción',
+        en: 'Version-controlled, safe schema migrations for production',
+      },
+      {
+        es: 'Optimización de consultas SQL complejas para reporting y auditoría',
+        en: 'SQL query optimization for complex reporting and audit trails',
+      },
+    ],
+    interconnection: {
+      es: 'Garantiza la persistencia fiable de todas las entidades de negocio requeridas por los servicios backend, manteniendo integridad y consistencia histórica.',
+      en: 'Guarantees reliable persistence for all business entities required by backend services, maintaining integrity and historical consistency.',
+    },
+    aiRelationship: {
+      es: 'Provee datasets limpios y normalizados para alimentar contextos de IA y almacena clasificaciones y metadatos generados.',
+      en: 'Provides clean, normalized datasets to feed AI contexts and stores generated classifications and metadata.',
+    },
+    projectProofs: [
+      { name: 'NOVEX', slug: 'novex' },
+      { name: 'Actas', slug: 'actas' },
+      { name: 'CUN', slug: 'experience' },
+    ],
+    pipeline: {
+      from: {
+        es: 'Servicios Backend (TypeORM)',
+        en: 'Backend Services (TypeORM)',
+      },
+      receives: {
+        es: 'Operaciones CRUD, transacciones, sentencias SQL',
+        en: 'CRUD operations, transactions, SQL statements',
+      },
+      produces: {
+        es: 'Registros persistidos, datasets normalizados, reportes',
+        en: 'Persisted records, normalized datasets, reports',
+      },
+      to: {
+        es: 'Almacenamiento Cloud SQL & Backups',
+        en: 'Cloud SQL Storage & Backups',
+      },
+    },
+  },
+  {
+    id: 'cloud',
+    index: '04',
+    isTransversal: false,
+    kicker: 'LAYER 04 // CLOUD & INFRASTRUCTURE',
+    name: {
+      es: 'Capa de Infraestructura & Cloud Delivery',
+      en: 'Infrastructure & Cloud Delivery Layer',
+    },
+    tagline: {
+      es: 'Contenedores Docker, servicios cloud administrados y producción confiable.',
+      en: 'Docker containers, managed cloud services, and reliable production.',
+    },
+    lede: {
+      es: 'Llevo el software del entorno local a producción real mediante Docker y Google Cloud Platform. Configuro servicios serverless con Cloud Run, bases de datos administradas con Cloud SQL y control de versiones con Git/GitHub.',
+      en: 'I take software from local environment to live production using Docker and Google Cloud Platform. I configure serverless services with Cloud Run, managed databases with Cloud SQL, and version control workflows with Git/GitHub.',
+    },
+    coreTech: [
+      {
+        name: 'Google Cloud Platform',
+        slug: 'googlecloud',
+        role: {
+          es: 'Infraestructura cloud para cómputo serverless y bases de datos',
+          en: 'Cloud infrastructure for serverless compute and databases',
+        },
+      },
+      {
+        name: 'Docker',
+        slug: 'docker',
+        role: {
+          es: 'Contenerización de aplicaciones y paridad entre entornos',
+          en: 'Application containerization and environment parity',
+        },
+      },
+    ],
+    supportingTech: [
+      'Cloud Run',
+      'Cloud SQL',
+      'Git',
+      'GitHub',
+      'Environment Config',
+    ],
+    capabilities: [
+      {
+        es: 'Dockerfiles multi-etapa optimizados para NestJS y React',
+        en: 'Multi-stage Dockerfiles optimized for NestJS and React',
+      },
+      {
+        es: 'Despliegues en Google Cloud Run con variables de entorno seguras',
+        en: 'Google Cloud Run deployments with secure environment configurations',
+      },
+      {
+        es: 'Conexión segura entre servicios de cómputo y bases de datos Cloud SQL',
+        en: 'Secure networking between compute services and Cloud SQL databases',
+      },
+    ],
+    interconnection: {
+      es: 'Sustenta la ejecución física y la disponibilidad de todas las capas anteriores, garantizando que el código y los datos operen de forma aislada y escalable.',
+      en: 'Underpins the physical execution and availability of all preceding layers, ensuring code and data operate reliably in isolation.',
+    },
+    aiRelationship: {
+      es: 'Hospeda microservicios que conectan con APIs externas de IA de forma segura con baja latencia y credenciales protegidas.',
+      en: 'Hosts microservices connecting securely to external AI APIs with low latency and protected credentials.',
+    },
+    projectProofs: [
+      { name: 'NOVEX', slug: 'novex' },
+      { name: 'CUN', slug: 'experience' },
+    ],
+    pipeline: {
+      from: { es: 'Código en GitHub', en: 'Code in GitHub' },
+      receives: {
+        es: 'Imágenes de Docker, configuraciones de variables',
+        en: 'Docker images, configuration variables',
+      },
+      produces: {
+        es: 'Servicios en producción en Cloud Run, Cloud SQL activo',
+        en: 'Live production services on Cloud Run, active Cloud SQL',
+      },
+      to: { es: 'Usuarios en Producción', en: 'End Users in Production' },
+    },
+  },
+  {
+    id: 'ai',
+    index: '05',
+    isTransversal: true,
+    kicker: 'TRANSVERSAL // APPLIED AI',
+    name: {
+      es: 'Capacidad Transversal de Inteligencia Artificial',
+      en: 'Transversal Artificial Intelligence Capability',
+    },
+    tagline: {
+      es: 'Automatización de procesos, análisis de información y modelos integrados al producto.',
+      en: 'Process automation, information analysis, and models integrated into the product.',
+    },
+    lede: {
+      es: 'No me defino como investigador de Machine Learning ni científico de datos: aplico Inteligencia Artificial como una capacidad transversal de ingeniería de producto. Integro la API de Google Gemini en flujos reales para automatizar tareas repetitivas, extraer conocimiento de documentos y enriquecer la experiencia de usuario.',
+      en: 'I do not define myself as an ML researcher or data scientist: I apply Artificial Intelligence as a transversal product engineering capability. I integrate the Google Gemini API into real workflows to automate repetitive tasks, extract knowledge from documents, and enrich user experiences.',
+    },
+    coreTech: [
+      {
+        name: 'Gemini AI',
+        slug: 'googlegemini',
+        role: {
+          es: 'Modelos multimodales para análisis, extracción y generación',
+          en: 'Multimodal models for analysis, extraction, and generation',
+        },
+      },
+      {
+        name: 'AI APIs & Integrations',
+        slug: 'ai',
+        role: {
+          es: 'Pipelines de automatización y orquestación con el backend',
+          en: 'Automation pipelines and backend orchestration',
+        },
+      },
+    ],
+    supportingTech: [
+      'Prompt Engineering',
+      'Structured JSON Outputs',
+      'Process Automation',
+      'Content Generation',
+    ],
+    capabilities: [
+      {
+        es: 'Integración de Gemini en servicios backend con esquemas de salida tipados',
+        en: 'Gemini integration into backend services with typed output schemas',
+      },
+      {
+        es: 'Automatización de clasificación de texto y procesamiento de documentos',
+        en: 'Text classification and document processing automation',
+      },
+      {
+        es: 'Diseño de prompts deterministas y control de respuestas para aplicaciones web',
+        en: 'Deterministic prompt design and guardrails for web applications',
+      },
+    ],
+    interconnection: {
+      es: 'Atraviesa horizontalmente todo el sistema: enriquece la UI con flujos asistidos, opera dentro del Backend mediante APIs seguras y valida información antes de persistirla en la capa de Datos.',
+      en: 'Horizontally traverses the entire system: enriches the UI with assisted flows, operates inside the Backend via secure APIs, and validates data before persistence.',
+    },
+    projectProofs: [
+      { name: 'NOVEX', slug: 'novex' },
+      { name: 'Entrevistas', slug: 'entrevistas' },
+    ],
+    pipeline: {
+      from: {
+        es: 'Datos no estructurados / Consultas',
+        en: 'Unstructured data / Queries',
+      },
+      receives: {
+        es: 'Textos, requerimientos, formularios, contextos de negocio',
+        en: 'Text, requirements, forms, business context',
+      },
+      produces: {
+        es: 'JSON tipado, resúmenes, clasificaciones, automatización',
+        en: 'Typed JSON, summaries, classifications, automation',
+      },
+      to: {
+        es: 'Backend & Experiencia del Usuario',
+        en: 'Backend & User Experience',
+      },
+    },
+  },
+]
+
+/**
+ * Secondary Engineering Toolkit: verified tools that support development.
+ */
+export const stackToolkit: readonly StackToolkitItem[] = [
+  {
+    name: 'POSTMAN',
+    slug: 'postman',
+    role: {
+      es: 'Pruebas y contratos de APIs',
+      en: 'API testing & contracts',
+    },
+  },
+  {
+    name: 'FIGMA',
+    slug: 'figma',
+    role: {
+      es: 'Diseño UI y sistemas visuales',
+      en: 'UI design & visual systems',
+    },
+  },
+  {
+    name: 'VS CODE',
+    slug: 'visualstudiocode',
+    role: { es: 'Entorno de desarrollo', en: 'Development IDE' },
+  },
+  {
+    name: 'CURSOR',
+    slug: 'cursor',
+    role: {
+      es: 'Desarrollo asistido por IA',
+      en: 'AI-assisted development',
+    },
+  },
+  {
+    name: 'GIT',
+    slug: 'git',
+    role: { es: 'Control de versiones', en: 'Version control' },
+  },
+  {
+    name: 'GITHUB',
+    slug: 'github',
+    role: {
+      es: 'Repositorios y colaboración',
+      en: 'Repository & collaboration',
+    },
+  },
+  {
+    name: 'DOCKER',
+    slug: 'docker',
+    role: {
+      es: 'Entornos locales y producción',
+      en: 'Local & prod environments',
+    },
+  },
+]
+
+/**
+ * Legacy support for HomePage topology visualization.
+ */
 export const stackGroups: readonly StackGroup[] = [
   {
     id: 'interface',
@@ -14,26 +537,20 @@ export const stackGroups: readonly StackGroup[] = [
     items: [
       { name: 'React' },
       { name: 'TypeScript' },
-      { name: 'JavaScript' },
       { name: 'Tailwind CSS' },
-      { name: 'Motion / Framer Motion' },
+      { name: 'Vite' },
+      { name: 'JavaScript' },
     ],
   },
   {
     id: 'backend',
     label: { es: 'Backend', en: 'Backend' },
     items: [
-      { name: 'Node.js' },
       { name: 'NestJS' },
+      { name: 'Node.js' },
       { name: 'REST APIs' },
-      { name: 'Authentication' },
-      {
-        name: 'Application architecture',
-        note: {
-          es: 'Límites claros entre servicios y dominio',
-          en: 'Clear boundaries between services and domain',
-        },
-      },
+      { name: 'TypeORM' },
+      { name: 'JWT Authentication' },
     ],
   },
   {
@@ -42,31 +559,30 @@ export const stackGroups: readonly StackGroup[] = [
     items: [
       { name: 'PostgreSQL' },
       { name: 'SQL' },
-      { name: 'TypeORM / Prisma' },
-      { name: 'Data modeling' },
+      { name: 'TypeORM' },
+      { name: 'Database Migrations' },
     ],
   },
   {
     id: 'cloud',
     label: { es: 'Cloud & Delivery', en: 'Cloud & Delivery' },
     items: [
-      { name: 'GCP' },
+      { name: 'Google Cloud Platform' },
+      { name: 'Docker' },
       { name: 'Cloud Run' },
       { name: 'Cloud SQL' },
-      { name: 'Docker' },
-      { name: 'GitHub Actions' },
-      { name: 'CI/CD' },
+      { name: 'Git & GitHub' },
     ],
   },
   {
     id: 'ai',
-    label: { es: 'AI', en: 'AI' },
+    label: { es: 'AI (Transversal)', en: 'AI (Transversal)' },
     items: [
-      { name: 'Gemini / Generative AI' },
-      { name: 'LLM integrations' },
-      { name: 'Structured outputs' },
-      { name: 'Prompt engineering' },
-      { name: 'AI workflows' },
+      { name: 'Gemini AI' },
+      { name: 'AI APIs' },
+      { name: 'Structured Outputs' },
+      { name: 'Prompt Engineering' },
+      { name: 'Process Automation' },
     ],
   },
 ]
@@ -77,8 +593,8 @@ export const stackDomains: readonly StackDomain[] = [
     nodeClass: 'is-interface',
     label: 'INTERFACE',
     hint: {
-      es: 'Experiencias digitales',
-      en: 'Digital experiences',
+      es: 'Experiencias digitales reactivas',
+      en: 'Reactive digital experiences',
     },
   },
   {
@@ -86,8 +602,8 @@ export const stackDomains: readonly StackDomain[] = [
     nodeClass: 'is-services',
     label: 'SERVICES',
     hint: {
-      es: 'Lógica y APIs',
-      en: 'Logic and APIs',
+      es: 'Lógica de negocio y APIs',
+      en: 'Business logic & APIs',
     },
   },
   {
@@ -95,8 +611,8 @@ export const stackDomains: readonly StackDomain[] = [
     nodeClass: 'is-data',
     label: 'DATA',
     hint: {
-      es: 'Persistencia y modelos',
-      en: 'Persistence and models',
+      es: 'Persistencia relacional y modelos',
+      en: 'Relational persistence & models',
     },
   },
   {
@@ -104,17 +620,17 @@ export const stackDomains: readonly StackDomain[] = [
     nodeClass: 'is-cloud',
     label: 'CLOUD',
     hint: {
-      es: 'Entrega y operación',
-      en: 'Delivery and operations',
+      es: 'Infraestructura y entrega',
+      en: 'Infrastructure & delivery',
     },
   },
   {
     id: 'ai',
     nodeClass: 'is-ai',
-    label: 'AI',
+    label: 'AI (TRANSVERSAL)',
     hint: {
-      es: 'Inteligencia aplicada',
-      en: 'Applied intelligence',
+      es: 'Capacidad transversal aplicada',
+      en: 'Applied transversal capability',
     },
   },
 ]
@@ -133,8 +649,8 @@ export const stackCapabilities: readonly StackCapability[] = [
       en: 'that are clear, fast and scalable.',
     },
     lede: {
-      es: 'Desarrollo interfaces web modernas y responsivas buscando equilibrar experiencia de usuario, mantenibilidad y rendimiento. Trabajo con arquitecturas basadas en componentes y sistemas visuales reutilizables para construir productos que puedan evolucionar sin perder consistencia.',
-      en: 'I build modern, responsive web interfaces that balance user experience, maintainability and performance. I work with component-based architectures and reusable visual systems so products can evolve without losing consistency.',
+      es: 'Desarrollo interfaces web modernas y responsivas buscando equilibrar experiencia de usuario, mantenibilidad y rendimiento.',
+      en: 'I build modern, responsive web interfaces that balance user experience, maintainability and performance.',
     },
     featured: [
       {
@@ -153,343 +669,15 @@ export const stackCapabilities: readonly StackCapability[] = [
           en: 'Typed application development',
         },
       },
-      {
-        name: 'TAILWIND CSS',
-        slug: 'tailwindcss',
-        role: {
-          es: 'Design systems & responsive UI',
-          en: 'Design systems & responsive UI',
-        },
-      },
-      {
-        name: 'VITE',
-        slug: 'vite',
-        role: {
-          es: 'Modern frontend tooling',
-          en: 'Modern frontend tooling',
-        },
-      },
     ],
-    tags: ['JavaScript', 'HTML5', 'CSS3', 'Responsive Design'],
+    tags: ['Tailwind CSS', 'Vite', 'JavaScript', 'HTML5/CSS3'],
     rail: [
       'COMPONENT ARCHITECTURE',
       'RESPONSIVE DESIGN',
       'UX/UI',
       'STATEFUL INTERFACES',
       'REUSABLE SYSTEMS',
-      'PERFORMANCE',
     ],
-  },
-  {
-    id: 'backend',
-    index: '02',
-    kicker: 'BACKEND',
-    titleLine1: {
-      es: 'La lógica detrás',
-      en: 'The logic behind',
-    },
-    titleLine2: {
-      es: 'del producto.',
-      en: 'the product.',
-    },
-    lede: {
-      es: 'Construyo servicios backend orientados a separar responsabilidades, modelar reglas de negocio y conectar aplicaciones mediante APIs claras y mantenibles.',
-      en: 'I build backend services that separate responsibilities, model business rules and connect applications through clear, maintainable APIs.',
-    },
-    featured: [
-      {
-        name: 'NODE.JS',
-        slug: 'nodedotjs',
-        role: {
-          es: 'Runtime del servidor',
-          en: 'Server runtime',
-        },
-      },
-      {
-        name: 'NESTJS',
-        slug: 'nestjs',
-        role: {
-          es: 'Servicios y arquitectura de APIs',
-          en: 'Services and API architecture',
-        },
-      },
-      {
-        name: 'REST APIs',
-        role: {
-          es: 'Contratos entre cliente y servidor',
-          en: 'Contracts between client and server',
-        },
-      },
-      {
-        name: 'TYPEORM',
-        slug: 'typeorm',
-        role: {
-          es: 'Acceso y modelado de datos',
-          en: 'Data access and modeling',
-        },
-      },
-      {
-        name: 'JWT AUTHENTICATION',
-        role: {
-          es: 'Autenticación y control de acceso',
-          en: 'Authentication and access control',
-        },
-      },
-    ],
-    tags: ['API Architecture', 'Error Handling'],
-    rail: [
-      'API DESIGN',
-      'BUSINESS LOGIC',
-      'AUTHENTICATION',
-      'ROLE-BASED ACCESS',
-      'SERVICE ARCHITECTURE',
-      'ERROR HANDLING',
-    ],
-    flow: ['CLIENT', 'API', 'SERVICE', 'BUSINESS LOGIC', 'DATA'],
-    flowOrientation: 'vertical',
-  },
-  {
-    id: 'data',
-    index: '03',
-    kicker: 'DATA',
-    titleLine1: {
-      es: 'Datos diseñados',
-      en: 'Data designed',
-    },
-    titleLine2: {
-      es: 'para sostener el sistema.',
-      en: 'to support the system.',
-    },
-    lede: {
-      es: 'Trabajo con PostgreSQL y SQL desde el diseño del modelo hasta su evolución en producción, incluyendo consultas, migraciones, validación de información y optimización de estructuras de datos.',
-      en: 'I work with PostgreSQL and SQL from model design through production evolution, including queries, migrations, data validation and structure optimization.',
-    },
-    featured: [
-      {
-        name: 'POSTGRESQL',
-        slug: 'postgresql',
-        role: {
-          es: 'Base de datos relacional',
-          en: 'Relational database',
-        },
-      },
-      {
-        name: 'SQL',
-        role: {
-          es: 'Consultas y modelado',
-          en: 'Queries and modeling',
-        },
-      },
-      {
-        name: 'TYPEORM',
-        slug: 'typeorm',
-        role: {
-          es: 'Migraciones y acceso a datos',
-          en: 'Migrations and data access',
-        },
-      },
-    ],
-    tags: ['Database Design', 'Database Migrations'],
-    rail: [
-      'DATA MODELING',
-      'SQL QUERIES',
-      'MIGRATIONS',
-      'DATA VALIDATION',
-      'DATABASE ADMINISTRATION',
-      'QUERY OPTIMIZATION',
-    ],
-    flow: ['APPLICATION', 'DATA ACCESS', 'POSTGRESQL', 'STRUCTURED DATA'],
-    flowOrientation: 'vertical',
-  },
-  {
-    id: 'cloud',
-    index: '04',
-    kicker: 'CLOUD & DELIVERY',
-    titleLine1: {
-      es: 'Del entorno local',
-      en: 'From the local environment',
-    },
-    titleLine2: {
-      es: 'a producción.',
-      en: 'to production.',
-    },
-    lede: {
-      es: 'Además de desarrollar funcionalidades, participo en el proceso de llevar las aplicaciones a producción, configurando servicios, contenedores y entornos cloud para que el software pueda operar de forma confiable.',
-      en: 'Beyond building features, I take part in getting applications to production by configuring services, containers and cloud environments so the software can run reliably.',
-    },
-    featured: [
-      {
-        name: 'GOOGLE CLOUD PLATFORM',
-        slug: 'googlecloud',
-        role: {
-          es: 'Infraestructura y servicios cloud',
-          en: 'Cloud infrastructure and services',
-        },
-      },
-      {
-        name: 'DOCKER',
-        slug: 'docker',
-        role: {
-          es: 'Contenedores locales y de producción',
-          en: 'Local and production containers',
-        },
-      },
-      {
-        name: 'GIT',
-        slug: 'git',
-        role: {
-          es: 'Control de versiones',
-          en: 'Version control',
-        },
-      },
-      {
-        name: 'GITHUB',
-        slug: 'github',
-        role: {
-          es: 'Repositorio y colaboración',
-          en: 'Repository and collaboration',
-        },
-      },
-    ],
-    tags: ['Application Deployment', 'Service Configuration'],
-    gcpHighlights: ['CLOUD RUN', 'CLOUD SQL'],
-    rail: [
-      'VERSION CONTROL',
-      'CONTAINERIZATION',
-      'CLOUD DEPLOYMENT',
-      'SERVICE CONFIGURATION',
-      'PRODUCTION DELIVERY',
-    ],
-    flow: ['CODE', 'GIT', 'BUILD', 'DOCKER', 'CLOUD RUN', 'PRODUCTION'],
-    flowOrientation: 'horizontal',
-  },
-  {
-    id: 'ai',
-    index: '05',
-    kicker: 'AI',
-    titleLine1: {
-      es: 'Inteligencia integrada',
-      en: 'Intelligence integrated',
-    },
-    titleLine2: {
-      es: 'al producto.',
-      en: 'into the product.',
-    },
-    lede: {
-      es: 'Integro capacidades de Inteligencia Artificial dentro de aplicaciones para automatizar procesos, analizar información y transformar datos o contenido en resultados útiles para los usuarios.',
-      en: 'I integrate artificial intelligence into applications to automate processes, analyze information and turn data or content into useful results for users.',
-    },
-    featured: [
-      {
-        name: 'GEMINI AI',
-        slug: 'googlegemini',
-        role: {
-          es: 'Modelo integrado al producto',
-          en: 'Model integrated into the product',
-        },
-      },
-    ],
-    tags: ['AI APIs', 'AI Model Integration'],
-    rail: [
-      'AI INTEGRATION',
-      'PROCESS AUTOMATION',
-      'INFORMATION ANALYSIS',
-      'CONTENT GENERATION',
-      'AI APIs',
-    ],
-    flow: [
-      'APPLICATION',
-      'CONTEXT / DATA',
-      'AI MODEL',
-      'STRUCTURED RESULT',
-      'USER',
-    ],
-    flowOrientation: 'vertical',
-  },
-]
-
-export const stackToolkit: readonly StackToolkitItem[] = [
-  {
-    name: 'POSTMAN',
-    slug: 'postman',
-    role: { es: 'API testing', en: 'API testing' },
-  },
-  {
-    name: 'FIGMA',
-    slug: 'figma',
-    role: { es: 'Interface design', en: 'Interface design' },
-  },
-  {
-    name: 'VS CODE',
-    slug: 'visualstudiocode',
-    role: { es: 'Development', en: 'Development' },
-  },
-  {
-    name: 'CURSOR',
-    role: {
-      es: 'AI-assisted development',
-      en: 'AI-assisted development',
-    },
-  },
-  {
-    name: 'GIT',
-    slug: 'git',
-    role: { es: 'Version control', en: 'Version control' },
-  },
-  {
-    name: 'GITHUB',
-    slug: 'github',
-    role: {
-      es: 'Repository & collaboration',
-      en: 'Repository & collaboration',
-    },
-  },
-  {
-    name: 'DOCKER',
-    slug: 'docker',
-    role: {
-      es: 'Local & production environments',
-      en: 'Local & production environments',
-    },
-  },
-]
-
-export const stackCore: readonly StackCoreItem[] = [
-  {
-    index: '01',
-    name: 'REACT',
-    slug: 'react',
-    category: { es: 'INTERFACE', en: 'INTERFACE' },
-  },
-  {
-    index: '02',
-    name: 'TYPESCRIPT',
-    slug: 'typescript',
-    category: { es: 'LANGUAGE', en: 'LANGUAGE' },
-  },
-  {
-    index: '03',
-    name: 'NESTJS',
-    slug: 'nestjs',
-    category: { es: 'BACKEND', en: 'BACKEND' },
-  },
-  {
-    index: '04',
-    name: 'POSTGRESQL',
-    slug: 'postgresql',
-    category: { es: 'DATA', en: 'DATA' },
-  },
-  {
-    index: '05',
-    name: 'DOCKER',
-    slug: 'docker',
-    category: { es: 'DELIVERY', en: 'DELIVERY' },
-  },
-  {
-    index: '06',
-    name: 'GOOGLE CLOUD',
-    slug: 'googlecloud',
-    category: { es: 'INFRASTRUCTURE', en: 'INFRASTRUCTURE' },
   },
 ]
 
@@ -503,17 +691,17 @@ export const stackSystemNodes: readonly StackSystemNode[] = [
   { id: 'api', label: 'API', stack: 'NestJS · REST · TypeORM' },
   { id: 'data', label: 'DATA', stack: 'PostgreSQL · SQL' },
   { id: 'cloud', label: 'CLOUD', stack: 'Google Cloud · Docker' },
-  { id: 'ai', label: 'AI', stack: 'Gemini · AI APIs' },
+  { id: 'ai', label: 'AI (TRANSVERSAL)', stack: 'Gemini · AI APIs' },
 ]
 
 export const stackPrincipleLayers = [
   'INTERFACE',
-  'LOGIC',
+  'SERVICES',
   'DATA',
   'CLOUD',
-  'AI',
+  'AI (TRANSVERSAL)',
 ] as const
 
-export function getStackCapability(id: string) {
-  return stackCapabilities.find((capability) => capability.id === id)
+export function getStackLayerArchitecture(id: string) {
+  return stackLayersArchitecture.find((layer) => layer.id === id)
 }

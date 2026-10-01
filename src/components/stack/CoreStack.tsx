@@ -1,6 +1,7 @@
-import { stackCore } from '@/data/stack'
-import { getLocalized } from '@/data/projects'
+import { TechIcon } from '@/components/common/TechIcon'
 import { Reveal, Stagger, StaggerItem } from '@/components/design-system'
+import { getLocalized } from '@/data/projects'
+import { stackCore } from '@/data/stack'
 import { useLocale } from '@/hooks/useLocale'
 
 export function CoreStack() {
@@ -21,18 +22,13 @@ export function CoreStack() {
         {stackCore.map((item) => (
           <StaggerItem key={item.index} className="stack-core__row">
             <span className="stack-core__index">{item.index}</span>
-            {item.slug && (
-              <img
-                src={`https://cdn.simpleicons.org/${item.slug}`}
-                alt=""
-                width={16}
-                height={16}
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-            <strong>{item.name}</strong>
-            <em>{getLocalized(item.category, locale)}</em>
+            <div className="stack-core__icon-wrap">
+              {item.slug && <TechIcon slug={item.slug} size={18} />}
+            </div>
+            <strong className="stack-core__name">{item.name}</strong>
+            <span className="stack-core__category">
+              {getLocalized(item.category, locale)}
+            </span>
           </StaggerItem>
         ))}
       </Stagger>

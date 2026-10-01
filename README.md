@@ -1,6 +1,6 @@
 # Proyecto Portafolio
 
-Portafolio personal de **Alejandro — Full Stack Product Engineer**. La experiencia presenta producto, frontend, backend, datos, cloud e inteligencia artificial como partes de un mismo sistema profesional.
+Portafolio personal de **Alejandro — Desarrollador Full Stack** (formación: Ingeniero Multimedia). La experiencia presenta producto, frontend, backend, datos, cloud e inteligencia artificial como partes de un mismo sistema profesional.
 
 ## Dirección visual
 

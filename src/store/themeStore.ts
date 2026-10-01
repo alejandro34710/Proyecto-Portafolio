@@ -16,6 +16,20 @@ function getSystemTheme(): ResolvedTheme {
 }
 
 function resolveTheme(theme: Theme): ResolvedTheme {
+  if (typeof window !== 'undefined') {
+    if (
+      window.location.search.includes('theme=dark') ||
+      window.location.hash.includes('dark')
+    ) {
+      return 'dark'
+    }
+    if (
+      window.location.search.includes('theme=light') ||
+      window.location.hash.includes('light')
+    ) {
+      return 'light'
+    }
+  }
   if (theme === 'system') return getSystemTheme()
   return theme
 }

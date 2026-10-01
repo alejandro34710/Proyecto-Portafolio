@@ -1,16 +1,22 @@
+import { TechIcon } from '@/components/common/TechIcon'
 import { techMarqueeItems } from '@/data/techMarquee'
 import { useLocale } from '@/hooks/useLocale'
 
 export function TechMarquee() {
   const { locale } = useLocale()
-  const label =
-    locale === 'es' ? 'Tecnologías del stack' : 'Stack technologies'
+  const label = locale === 'es' ? 'Tecnologías del stack' : 'Stack technologies'
   const sequence = [...techMarqueeItems, ...techMarqueeItems]
 
   return (
     <section className="tech-marquee" aria-label={label}>
-      <div className="tech-marquee__fade tech-marquee__fade--left" aria-hidden="true" />
-      <div className="tech-marquee__fade tech-marquee__fade--right" aria-hidden="true" />
+      <div
+        className="tech-marquee__fade tech-marquee__fade--left"
+        aria-hidden="true"
+      />
+      <div
+        className="tech-marquee__fade tech-marquee__fade--right"
+        aria-hidden="true"
+      />
 
       <div className="tech-marquee__viewport">
         <ul className="tech-marquee__track">
@@ -20,14 +26,11 @@ export function TechMarquee() {
               key={`${tech.slug}-${index}`}
               aria-hidden={index >= techMarqueeItems.length || undefined}
             >
-              <img
+              <TechIcon
+                slug={tech.slug}
+                size={20}
                 className="tech-marquee__icon"
-                src={`https://cdn.simpleicons.org/${tech.slug}`}
-                alt=""
-                width={22}
-                height={22}
-                loading="lazy"
-                decoding="async"
+                aria-hidden="true"
               />
               <span>{tech.name}</span>
             </li>

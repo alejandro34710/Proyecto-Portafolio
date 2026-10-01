@@ -1,102 +1,81 @@
-import { Send } from 'lucide-react'
+import { Mail, FileDown } from 'lucide-react'
 import { Seo } from '@/components/common/Seo'
+import {
+  ContactSignalVisual,
+  ContactEmailCard,
+  ContactChannelsList,
+  ContactContextMatrix,
+} from '@/components/contact'
 import { CONTACT_CONFIG } from '@/config/contact.config'
 import { useLocale } from '@/hooks/useLocale'
+import '@/styles/contact.css'
 
 export function ContactPage() {
   const { t } = useLocale()
-  const mailto = CONTACT_CONFIG.email
-    ? `mailto:${CONTACT_CONFIG.email}`
-    : undefined
 
   return (
-    <div className="contact-page">
+    <div className="contact-page-shell">
       <Seo title={t.header.nav.contact} description={t.contact.lede} />
 
-      <div className="contact-page__hero-grid">
-        <div>
-          <p className="page-eyebrow">{t.contact.eyebrow}</p>
-          <h1 className="contact-page__title">
-            {t.contact.titleLine1}
-            <br />
-            <em>{t.contact.titleLine2}</em>
-          </h1>
-          <p className="contact-page__lede">{t.contact.lede}</p>
+      {/* Viewport 1: Complete Scene (Intro + Email + Signal Visual) */}
+      <div className="contact-hero-scene">
+        <section
+          className="contact-hero-grid"
+          aria-label="Contact introduction"
+        >
+          <div className="contact-hero__intro">
+            <p className="page-eyebrow">{t.contact.eyebrow}</p>
+            <h1 className="contact-hero__title">
+              {t.contact.titleLine1}
+              <em>{t.contact.titleLine2}</em>
+            </h1>
+            <p className="contact-hero__lede">{t.contact.lede}</p>
 
-          {mailto ? (
-            <a className="contact-page__cta" href={mailto}>
-              {t.contact.cta} <Send size={16} strokeWidth={1.5} />
-            </a>
-          ) : (
-            <span className="contact-page__cta" title="TODO: email">
-              {t.contact.cta} <Send size={16} strokeWidth={1.5} />
-            </span>
-          )}
-        </div>
+            {/* Email as a core design element */}
+            <ContactEmailCard />
+          </div>
 
-        <div className="contact-page__visual" aria-hidden="true">
-          <span className="contact-page__orbit" />
-          <span className="contact-page__orbit" />
-          <span className="contact-page__orbit" />
-          <div className="contact-page__visual-core">
-            <Send size={27} strokeWidth={1.15} />
-            <strong>OPEN</strong>
-            <small>CHANNEL / 06</small>
+          <div className="contact-hero__visual-wrap">
+            <ContactSignalVisual />
           </div>
-          <i className="is-one" />
-          <i className="is-two" />
-          <div className="contact-page__visual-label is-top">
-            <span>LOCATION</span>
-            <strong>{CONTACT_CONFIG.location}</strong>
-          </div>
-          <div className="contact-page__visual-label is-bottom">
-            <span>MODE</span>
-            <strong>REMOTE / ASYNC</strong>
-          </div>
-        </div>
+        </section>
       </div>
 
-      <div className="contact-channels">
-        <dl>
-          <dt>{t.contact.email}</dt>
-          <dd>
-            {CONTACT_CONFIG.email ? (
-              <a href={`mailto:${CONTACT_CONFIG.email}`}>
-                {CONTACT_CONFIG.email}
-              </a>
-            ) : (
-              <span className="is-todo">{t.contact.todoValue}</span>
-            )}
-          </dd>
-        </dl>
-        <dl>
-          <dt>{t.contact.linkedin}</dt>
-          <dd>
-            {CONTACT_CONFIG.linkedin ? (
+      {/* Subsequent Sections (Scroll Down Scene) */}
+      <div className="contact-body-sections">
+        {/* Professional Scope & Working Parameters */}
+        <ContactContextMatrix />
+
+        {/* Verified Professional Channels Directory */}
+        <ContactChannelsList />
+
+        {/* Closing Bridge Section */}
+        <section className="contact-closing" aria-label="Closing statement">
+          <span className="contact-closing__kicker">
+            {t.contact.closing.kicker}
+          </span>
+          <h2 className="contact-closing__title">{t.contact.closing.title}</h2>
+          <p className="contact-closing__body">{t.contact.closing.body}</p>
+          <div className="contact-closing__actions">
+            <a
+              href={`mailto:${CONTACT_CONFIG.email}`}
+              className="contact-email-btn contact-email-btn--primary"
+            >
+              <Mail size={16} strokeWidth={1.8} aria-hidden="true" />
+              <span>{t.contact.channels.email.action}</span>
+            </a>
+            {CONTACT_CONFIG.cvUrl && (
               <a
-                href={CONTACT_CONFIG.linkedin}
-                target="_blank"
-                rel="noreferrer"
+                href={CONTACT_CONFIG.cvUrl}
+                download="Alejandro-CV.pdf"
+                className="contact-email-btn contact-email-btn--copy"
               >
-                LinkedIn
+                <FileDown size={16} strokeWidth={1.8} aria-hidden="true" />
+                <span>{t.contact.channels.cv.action}</span>
               </a>
-            ) : (
-              <span className="is-todo">{t.contact.todoValue}</span>
             )}
-          </dd>
-        </dl>
-        <dl>
-          <dt>{t.contact.github}</dt>
-          <dd>
-            {CONTACT_CONFIG.github ? (
-              <a href={CONTACT_CONFIG.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            ) : (
-              <span className="is-todo">{t.contact.todoValue}</span>
-            )}
-          </dd>
-        </dl>
+          </div>
+        </section>
       </div>
     </div>
   )

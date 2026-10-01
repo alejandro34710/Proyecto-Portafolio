@@ -1,7 +1,9 @@
+import { IDENTITY } from './identity.config'
+
 export const APP_CONFIG = {
-  name: 'Alejandro — Ingeniero Multimedia · Desarrollador Fullstack',
+  name: `${IDENTITY.name} — ${IDENTITY.role.es}`,
   description:
-    'Ingeniero multimedia y desarrollador fullstack construyendo productos digitales completos entre frontend, backend, arquitectura, cloud e IA.',
+    'Desarrollador Full Stack con formación en Ingeniería Multimedia. Construyo productos digitales completos entre frontend, backend, cloud e IA.',
   /** TODO: add the verified production origin before publishing. */
   baseUrl: '',
   defaultLocale: 'es',

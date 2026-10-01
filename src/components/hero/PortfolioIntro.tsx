@@ -27,10 +27,18 @@ export function PortfolioIntro({ onComplete }: PortfolioIntroProps) {
 
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    const timer = window.setTimeout(closeIntro, reduceMotion ? 120 : 2450)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        closeIntro()
+      }
+    }
+
+    const timer = window.setTimeout(closeIntro, reduceMotion ? 80 : 1050)
+    window.addEventListener('keydown', handleKeyDown)
 
     return () => {
       window.clearTimeout(timer)
+      window.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = previousOverflow
     }
   }, [closeIntro, onComplete, reduceMotion, visible])
@@ -42,6 +50,8 @@ export function PortfolioIntro({ onComplete }: PortfolioIntroProps) {
           className="portfolio-intro"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={closeIntro}
+          style={{ cursor: 'pointer' }}
           transition={{
             duration: reduceMotion ? 0.08 : 0.6,
             ease: 'easeInOut',
